@@ -5,4 +5,4 @@
  * Date: 8-2-2016
  * Time: 11:45
  */
-echo 'hallo test';
+echo 'hallo allah akbar';
