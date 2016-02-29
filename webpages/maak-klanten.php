@@ -1,1 +1,6 @@
 <!-- Create and edit customers -->
+<?php include '../includes/header.php'; ?>
+
+<!-- content -->
+
+<?php include '../includes/footer.php'; ?>
