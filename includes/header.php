@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="navbar-header">
                     <ul class="navbar-nav nav">
-                        <li><a>Klanten</a></li>
-                        <li><a>Offertes</a></li>
-                        <li><a>Facturen</a></li>
-                        <li><a>Facturatie</a></li>
+                        <li><a href="../webpages/klanten.php">Klanten</a></li>
+                        <li><a href="../webpages/offertes.php">Offertes</a></li>
+                        <li><a href="../webpages/facturen.php">Facturen</a></li>
+                        <li><a href="../webpages/maak-offerte.php">Facturatie</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,4 +39,3 @@
     </div>
 </nav>
 
-</body>
