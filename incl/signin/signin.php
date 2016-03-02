@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="signin.css">
 
 <?php
+require_once "sessions.php";
 require_once "database.php";
 
 class Signin extends Database {
@@ -15,11 +16,11 @@ class Signin extends Database {
   private $row;
   
   public function __construct() {
-    if (isset($_POST['signin'])) {
+    if(isset($_POST['signin'])) {
       $this->usrError();
       $this->pwdError();
       
-      if (!empty($_POST['username']) and !empty($_POST['password'])) {
+      if(!empty($_POST['username']) and !empty($_POST['password'])) {
         $this->connDatabase();
         $this->dbError();
         $this->escString();
@@ -31,13 +32,13 @@ class Signin extends Database {
   }
   
   public function usrError() {
-    if (empty($_POST['username'])) {
+    if(empty($_POST['username'])) {
       $this->username = "Vul uw gebruiksersnaam in";
     }
   }
   
   public function pwdError() {
-    if (empty($_POST['password'])) {
+    if(empty($_POST['password'])) {
       $this->password = "Vul uw wachtwoord in";
     }
   }
@@ -68,14 +69,13 @@ class Signin extends Database {
   }
   
   public function initSession() {
-    if ($this->row == 1) {
+    if($this->row == 1) {
       $_SESSION['signedin'] = $this->accounts;
-      echo $_SESSION['signedin']['username'];
     }
   }
   
   public function rowError() {
-    if ($this->row == 0) {
+    if($this->row == 0) {
       $this->username = "Gebruikersnaam is verkeerd";
       $this->password = "Wachtwoord is verkeerd";
     }
@@ -94,3 +94,5 @@ $signin = new Signin();
     <input type="submit" name="signin" class="btn-signin" value="Login">
   </form>
 </div>
+
+<?php echo $sessions->username; ?>
