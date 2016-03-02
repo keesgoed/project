@@ -3,8 +3,10 @@
 class Sessions {
   public $username;
   
-  public function __construct() {
-    if(isset($_SESSION['signedin'])) {
+  private $signedin;
+  
+  public function __construct($signedin) {
+    if(isset($signedin)) {
       session_start();
       $this->accounts();
     }
@@ -14,6 +16,4 @@ class Sessions {
     $this->username = $_SESSION['signedin']['username'];
   }
 }
-
-$sessions = new Sessions();
 ?>

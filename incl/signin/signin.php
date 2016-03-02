@@ -1,12 +1,13 @@
 <link rel="stylesheet" type="text/css" href="signin.css">
 
 <?php
-require_once "sessions.php";
 require_once "database.php";
+require_once "sessions.php";
 
 class Signin extends Database {
   public $username = "Gebruikersnaam";
   public $password = "Wachtwoord";
+  public $signedin;
   
   private $usr;
   private $pwd;
@@ -71,6 +72,7 @@ class Signin extends Database {
   public function initSession() {
     if($this->row == 1) {
       $_SESSION['signedin'] = $this->accounts;
+      $this->signedin = $_SESSION['signedin'];
     }
   }
   
@@ -83,6 +85,7 @@ class Signin extends Database {
 }
 
 $signin = new Signin();
+$sessions = new Sessions($signin->signedin);
 ?>
 
 <div class="sign-in">
