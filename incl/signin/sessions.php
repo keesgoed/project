@@ -7,6 +7,7 @@ class Sessions {
   
   public function __construct($signedin) {
     session_start();
+    
     $this->signedin = $signedin;
     
     if(isset($this->signedin)) {
