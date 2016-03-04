@@ -6,10 +6,10 @@ class Sessions {
   private $signedin;
   
   public function __construct($signedin) {
+    session_start();
     $this->signedin = $signedin;
     
     if(isset($this->signedin)) {
-      session_start();
       $this->accounts();
     }
   }
