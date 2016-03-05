@@ -1,14 +1,12 @@
 <?php
 
 class Sessions {
-  public $signedin;
   public $username;
   
   public function __construct() {
     session_start();
     
     if(isset($_SESSION['signedin'])) {
-      $this->signedin = $_SESSION['signedin'];
       $this->accounts();
     }
   }

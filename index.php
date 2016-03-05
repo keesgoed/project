@@ -24,7 +24,7 @@
 require_once "incl/database.php";
 require_once "incl/sessions.php";
   
-  if(empty($sessions->signedin)) {
+  if(empty($_SESSION['signedin'])) {
     require_once "incl/signin/signin.php";
   }
   else {
