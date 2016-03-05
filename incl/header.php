@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,6 +36,10 @@
                         <li><a href="../webpages/maak-offerte.php">Facturatie</a></li>
                     </ul>
                 </div>
+                    <ul class="nav navbar-nav navbar-right" style="float:right;">
+                        <li><a href="../index.php">Uitloggen</a></li>
+                    </ul>
+
             </div>
         </div>
     </div>

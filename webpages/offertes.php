@@ -1,6 +1,6 @@
 <!-- Offer Page -->
-<?php include '../includes/header.php'; ?>
+<?php include '../incl/header.php'; ?>
 
 <!-- content -->
 
-<?php include '../includes/footer.php'; ?>
+<?php include '../incl/footer.php'; ?>
