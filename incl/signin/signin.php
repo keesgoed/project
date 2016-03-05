@@ -67,6 +67,8 @@ class Signin extends Database {
   public function initSession() {
     if($this->row == 1) {
       $_SESSION['signedin'] = $this->accounts;
+      
+      header("Location: ".$_SERVER['REQUEST_URI']);
     }
   }
   

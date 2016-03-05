@@ -30,7 +30,7 @@ require_once "incl/sessions.php";
   else {
     echo $sessions->username;
     
-    $sessions->endSession();
+    unset($_SESSION['signedin']);
   }
 ?>  
 

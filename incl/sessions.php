@@ -14,10 +14,6 @@ class Sessions {
   public function accounts() {
     $this->username = $_SESSION['signedin']['username'];
   }
-  
-  public function endSession() {
-    unset($_SESSION['signedin']);
-  }
 }
 
 $sessions = new Sessions();
