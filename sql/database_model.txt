@@ -1,0 +1,45 @@
+Database model
+
+Accounts
+	-account_id
+	-username
+	-password
+
+Customers
+	-customer_id
+	-company
+	-firstname
+	-lastname
+	-email
+	-phone
+	-address
+	-city
+	-zipcode
+	-country
+	-signup_date
+
+Customers_offers
+	-customer_id
+	-offer_id
+
+customers_invoice
+	-customer_id
+	-invoice_id
+ 
+Offers
+	-offer_id
+	-offer_date
+	-offer_version
+	-offer_description
+	-offer_template
+	-offer_subtotal_price
+	-offer_total_price
+
+Invoice
+	-invoice_id
+	-invoice_date
+	-invoice_version
+	-invoice_description
+	-invoice_template
+	-invoice_subotal_price
+	-invoice_total_price
