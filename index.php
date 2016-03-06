@@ -21,11 +21,12 @@
 
 <body>
 <?php
-require_once "incl/database.php";
-require_once "incl/sessions.php";
+require_once "incl/globals.php";
+require_once $globals->database_php;
+require_once $globals->sessions_php;
   
   if(empty($_SESSION['signedin'])) {
-    require_once "incl/signin/signin.php";
+    require_once $globals->signin_php;
   }
   else {
     echo $sessions->username;
