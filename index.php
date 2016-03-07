@@ -29,10 +29,13 @@ require_once $globals->sessions_php;
     require_once $globals->signin_php;
   }
   else {
+    // Nav
     require_once $globals->header_php;
     
     // Content
+    require_once $globals->invoices_php;
     
+    // Copy
     require_once $globals->footer_php;
   }
 ?>  
