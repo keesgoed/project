@@ -29,9 +29,11 @@ require_once $globals->sessions_php;
     require_once $globals->signin_php;
   }
   else {
-    echo $sessions->username;
+    require_once $globals->header_php;
     
-    unset($_SESSION['signedin']);
+    // Content
+    
+    require_once $globals->footer_php;
   }
 ?>  
 

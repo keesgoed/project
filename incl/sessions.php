@@ -1,6 +1,6 @@
 <?php
 
-class Sessions {
+class Sessions extends Globals {
   public $username;
   
   public function __construct() {
@@ -13,6 +13,10 @@ class Sessions {
   
   public function accounts() {
     $this->username = $_SESSION['signedin']['username'];
+  }
+  
+  public function destSession() {
+    unset($_SESSION['signedin']);
   }
 }
 
