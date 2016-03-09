@@ -7,9 +7,12 @@
 
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Datatables -->
+  <link href="//cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="css/dataTables.bootstrap.css" rel="stylesheet">
   <!-- CSS -->
-  <link rel="stylesheet" href="css/signin.css">
-  <link rel="stylesheet" href="css/custom.css">
+  <link href="css/signin.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,16 +33,16 @@ require_once $globals->sessions_php;
   }
   else {
     // Nav
-    require_once $globals->header_php;
+    require_once $globals->nav_php;
     
     if(isset($_GET['page'])) {
       // Content
       switch($_GET['page']) {
         case 'klanten':
-          echo "Klanten pagina";
+          require_once $globals->customers_php;
           break;
         case 'offertes':
-          echo "Offertes pagina";
+          require_once $globals->offers_php;
           break;
         case 'facturatie':
           require_once $globals->billing_php;
@@ -56,5 +59,10 @@ require_once $globals->sessions_php;
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+  <script src="js/dataTables.tableTools.js"></script>
+  <script src="js/dataTables.bootstrap.js"></script>
+  <script src="js/custom.js"></script>
 </body>
 </html>
