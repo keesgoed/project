@@ -8,15 +8,13 @@ class Globals {
   public $header_php = "/header.php";
   public $signin_php = "/signin.php";
   public $signout_php = "/signout.php";
-  public $invoices_php = "/invoices.php";
-  public $footer_php = "/footer.php";
   public $billing_php = "/billing.php";
+  public $footer_php = "/footer.php";
   
   private $root;
   private $incl = "/incl";
   private $header = "/header";
   private $signin = "/signin";
-  private $invoices = "/invoices";
   private $webpages = "/webpages";
   private $footer = "/footer";
 
@@ -37,8 +35,7 @@ class Globals {
     
     $this->header = $this->incl.$this->header;
     $this->signin = $this->incl.$this->signin;
-    $this->invoices = $this->incl.$this->invoices;
-    $this->billing = $this->incl.$this->webpages;
+    $this->webpages = $this->incl.$this->webpages;
     $this->footer = $this->incl.$this->footer;
 
   }
@@ -53,7 +50,6 @@ class Globals {
     
     $this->header_php = $this->header.$this->header_php;
     $this->signin_php = $this->signin.$this->signin_php;
-    $this->invoices_php = $this->invoices.$this->invoices_php;
     $this->billing_php = $this->webpages.$this->billing_php;
     $this->footer_php = $this->footer.$this->footer_php;
 
