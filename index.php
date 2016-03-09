@@ -32,10 +32,25 @@ require_once $globals->sessions_php;
     // Nav
     require_once $globals->header_php;
     
-    // Content
-    require_once $globals->invoices_php;
+    if(isset($_GET['page'])) {
+      // Content
+      switch($_GET['page']) {
+        case 'customers':
+          echo "Klanten pagina";
+          break;
+        case 'offers':
+          echo "Offertes pagina";
+          break;
+        case 'invoices':
+          require_once $globals->invoices_php;
+          break;
+        case 'billing':
+          echo "Facturatie pagina";
+          break;
+      }
+    }
     
-    // Copy
+    // Footer
     require_once $globals->footer_php;
   }
 ?>  
