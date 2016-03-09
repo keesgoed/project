@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table table-striped table-bordered">
+  <table id="table-klanten" class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Firstname</th>
