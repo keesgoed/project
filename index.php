@@ -24,7 +24,9 @@
 require_once "incl/globals.php";
 require_once $globals->database_php;
 require_once $globals->sessions_php;
-  
+
+echo $globals->invoices_php;
+
   if(empty($_SESSION['signedin'])) {
     require_once $globals->signin_php;
   }
@@ -45,6 +47,7 @@ require_once $globals->sessions_php;
           require_once $globals->invoices_php;
           break;
         case 'billing':
+          require_once $globals->billing_php;
           echo "Facturatie pagina";
           break;
       }

@@ -10,13 +10,16 @@ class Globals {
   public $signout_php = "/signout.php";
   public $invoices_php = "/invoices.php";
   public $footer_php = "/footer.php";
+  public $billing_php = "/billing.php";
   
   private $root;
   private $incl = "/incl";
   private $header = "/header";
   private $signin = "/signin";
   private $invoices = "/invoices";
+  private $webpages = "/webpages";
   private $footer = "/footer";
+
   
   private $loc_incl = "incl";
   private $loc_signin = "/signin";
@@ -35,7 +38,9 @@ class Globals {
     $this->header = $this->incl.$this->header;
     $this->signin = $this->incl.$this->signin;
     $this->invoices = $this->incl.$this->invoices;
+    $this->billing = $this->incl.$this->webpages;
     $this->footer = $this->incl.$this->footer;
+
   }
   
   public function locPaths() {
@@ -49,7 +54,9 @@ class Globals {
     $this->header_php = $this->header.$this->header_php;
     $this->signin_php = $this->signin.$this->signin_php;
     $this->invoices_php = $this->invoices.$this->invoices_php;
+    $this->billing_php = $this->webpages.$this->billing_php;
     $this->footer_php = $this->footer.$this->footer_php;
+
   }
   
   public function locScripts() {
