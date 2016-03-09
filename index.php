@@ -35,13 +35,13 @@ require_once $globals->sessions_php;
     if(isset($_GET['page'])) {
       // Content
       switch($_GET['page']) {
-        case 'customers':
+        case 'klanten':
           echo "Klanten pagina";
           break;
-        case 'offers':
+        case 'offertes':
           echo "Offertes pagina";
           break;
-        case 'billing':
+        case 'facturatie':
           require_once $globals->billing_php;
           break;
       }

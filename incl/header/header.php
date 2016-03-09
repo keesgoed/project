@@ -4,9 +4,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <div class="navbar-header">
           <ul class="navbar-nav nav">
-            <li><a href="customers">Klanten</a></li>
-            <li><a href="offers">Offertes</a></li>
-            <li><a href="billing">Facturatie</a></li>
+            <li><a href="klanten">Klanten</a></li>
+            <li><a href="offertes">Offertes</a></li>
+            <li><a href="facturatie">Facturatie</a></li>
           </ul>
         </div>
         
