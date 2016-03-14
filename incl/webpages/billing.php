@@ -55,6 +55,7 @@ class Billing extends Database{
 $billing = new Billing();
 ?>
 <form method="post">
+    <div class="form">
         <div class="col-lg-2 form-group">
             <label>Voornaam</label><br>
             <input type="text" class="form-control" name="firstname"  placeholder="Voornaam">
@@ -102,7 +103,7 @@ $billing = new Billing();
     <label>Beschrijving</label><br>
     <input type="textarea">
     <input type="submit" name="submit">
-
+</div>
 
 </form>
 </div>
