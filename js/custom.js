@@ -25,3 +25,4 @@ function initDTTT(webpage) {
   
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
+
