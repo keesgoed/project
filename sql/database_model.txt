@@ -1,45 +1,53 @@
 Database model
 
-Accounts
-	-account_id
-	-username
-	-password
+accounts
+	- accounts_id
+	- username
+	- password
 
-Customers
-	-customer_id
-	-company
-	-firstname
-	-lastname
-	-email
-	-phone
-	-address
-	-city
-	-zipcode
-	-country
-	-signup_date
+customers
+	- customers_id
+  - addresses_id
+	- company
+	- firstname
+	- lastname
+	- email
+  - phone
 
-Customers_offers
-	-customer_id
-	-offer_id
+customers_addresses
+  - customers_id
+  - addresses_id
+
+addresses
+  - addresses_id
+  - address
+  - district
+  - city
+  - country
+  - postal_code
+
+customers_offers
+	- customers_id
+	- offers_id
 
 customers_invoice
-	-customer_id
-	-invoice_id
+	- customers_id
+	- invoices_id
  
-Offers
-	-offer_id
-	-offer_date
-	-offer_version
-	-offer_description
-	-offer_template
-	-offer_subtotal_price
-	-offer_total_price
+offers
+	- offers_id
+	- offer_date
+	- offer_version
+	- offer_description
+	- offer_template
+	- offer_subtotal_price
+	- offer_total_price
 
-Invoice
-	-invoice_id
-	-invoice_date
-	-invoice_version
-	-invoice_description
-	-invoice_template
-	-invoice_subotal_price
-	-invoice_total_price
+invoice
+	- invoices_id
+	- invoice_date
+	- invoice_version
+	- invoice_description
+	- invoice_template
+	- invoice_subotal_price
+	- invoice_total_price

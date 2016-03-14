@@ -49,7 +49,7 @@ class Signin extends Database {
   
   public function qryDatabase() {
     $this->sql = "
-      SELECT a.account_id, a.username, a.password
+      SELECT a.accounts_id, a.username, a.password
 			FROM accounts AS a
 			WHERE a.username = '".$this->usr."'
 				AND a.password = '".$this->pwd."'
