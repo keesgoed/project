@@ -1,13 +1,33 @@
+body { 
+  font-size: 140%; 
+}
+
+/* Datatables_tableTools */
+div.DTTT { 
+  margin-bottom: 0.5em; 
+  float: right; 
+}
+div.dataTables_wrapper { 
+  clear: both; 
+}
+
+
+/* Footer */
 footer {
-    background-color:#e7e7e7;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    overflow:hidden;
+  background-color:#e7e7e7;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  overflow:hidden;
 }
 
 .footertext{
+<<<<<<< HEAD
     margin-top:15px;
 }
+=======
+  margin-top:15px;
+}
+>>>>>>> e41b0a537e252887db7a928bbd1cc194b30caf08

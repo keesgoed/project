@@ -2,7 +2,7 @@ Options -MultiViews
  
 RewriteEngine On 
  
-RewriteBase /albeda_paint
+RewriteBase /albeda_paint/
  
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteCond %{REQUEST_FILENAME} !-f 
