@@ -11,7 +11,7 @@ $(document).ready(function(){
         console.log(webpages);
         break;
     case "facturatie":
-        console.log(webpages);
+        initDTTT(webpages);
         break; 
   }
 });
@@ -26,3 +26,11 @@ function initDTTT(webpage) {
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
 
+function initDTTT(webpage) {
+  var table = $("#table-" + webpage).DataTable();
+  var tt = new $.fn.dataTable.TableTools(table, {
+    "aButtons": []
+  });
+
+  $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
+}
