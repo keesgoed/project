@@ -104,7 +104,13 @@ $billing = new Billing();
             </div>
     </div>
 
+
     <input class="btn btn-primary save-button" type="submit" name="submit">
+
+    <label>Beschrijving</label><br>
+    <input type="textarea">
+    <input type="submit" name="submit">
+
 </div>
 
 </form>
