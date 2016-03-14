@@ -16,11 +16,6 @@ $(document).ready(function(){
   }
 });
 
-<<<<<<< HEAD
-  $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
-
-});
-=======
 function initDTTT(webpage) {
   var table = $("#table-" + webpage).DataTable();
   var tt = new $.fn.dataTable.TableTools(table, {
@@ -30,4 +25,4 @@ function initDTTT(webpage) {
   
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
->>>>>>> e41b0a537e252887db7a928bbd1cc194b30caf08
+
