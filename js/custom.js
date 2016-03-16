@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var pathname = window.location.pathname; // Returns path only
   var paths = pathname.split("/");
-  var webpages = paths[2].substring(0, 20);
+  var webpages = paths[2];
   
   switch(webpages) {
     case "klanten":

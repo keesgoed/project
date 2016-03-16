@@ -7,16 +7,11 @@ accounts
 
 customers
 	- customers_id
-  - addresses_id
 	- company
 	- firstname
 	- lastname
 	- email
   - phone
-
-customers_addresses
-  - customers_id
-  - addresses_id
 
 addresses
   - addresses_id

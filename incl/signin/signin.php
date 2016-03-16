@@ -9,6 +9,7 @@ class Signin extends Database {
   private $sql;
   private $query;
   private $rows;
+  private $accounts;
   private $row;
   
   public function __construct() {
@@ -57,7 +58,7 @@ class Signin extends Database {
     
     $this->query = mysqli_query($this->db, $this->sql);
     
-    while ($this->rows = mysqli_fetch_assoc($this->query)) {
+    while($this->rows = mysqli_fetch_assoc($this->query)) {
       $this->accounts = $this->rows;
     }
     
