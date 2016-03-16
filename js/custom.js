@@ -11,7 +11,7 @@ $(document).ready(function(){
         console.log(webpages);
         break;
     case "facturatie":
-        initDTTT(webpages);
+        initDTTTables(webpages);
         break; 
   }
 });
@@ -24,15 +24,19 @@ function initDTTT(webpage) {
     "aButtons": ["xls", "pdf", "print"]
   });
 
-  
+
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
 
-function initDTTT(webpage) {
+function initDTTTables(webpage) {
   var table = $("#table-" + webpage).DataTable();
   var tt = new $.fn.dataTable.TableTools(table, {
-    "aButtons": [],
-    "sRowSelect": "single"
+      "aButtons": [],
+      "sRowSelect": "single",
+      "language": {
+          "search": "Zoeken"
+      }
+
   });
 
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");

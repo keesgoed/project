@@ -1,21 +1,55 @@
 <?php
 class Billing extends Database{
 
-    private $customername;
+    private $firstname;
+    private $lastname;
+    private $email;
+    private $phone;
+    private $street;
+    private $zipcode;
+    private $place;
+    private $country;
+    private $company;
     private $description;
-    private $subtotal;
 
     //variables to execute the first query (generate table with customers)
     private $query_customers;
     private $result_customers;
+    private $qry_insert_customer;
 
     public function __construct(){
         $this->connDatabase();
         $this->dbError();
 
+        //Execute functions
         $this->getCustomers();
+        $this->insertCustomers();
 
     }
+    //Function to insert data into a database
+    public function insertCustomers(){
+
+    //Retreive variables if the form is submitted
+        if (isset($_POST['submit'])){
+            $this->firstname  =   $_POST['firstname'];
+            $this->lastname   =   $_POST['lastname'];
+            $this->email      =   $_POST['email'];
+            $this->phone      =   $_POST['phone'];
+            $this->street     =   $_POST['street'];
+            $this->zipcode    =   $_POST['zipcode'];
+            $this->place      =   $_POST['place'];
+            $this->country    =   $_POST['country'];
+            $this->company    =   $_POST['company'];
+            $this->description=   $_POST['description'];
+
+
+
+
+        }
+
+    }
+
+
     public function getCustomers(){
 
         $this->query_customers = "SELECT firstname, lastname
