@@ -44,60 +44,73 @@ class Billing extends Database{
                     <td>
                        '.$this->customers["firstname"].' '.$this->customers["lastname"].'<br>
                     </td>
-                </tr>
-             </tbody>';
+                </tr>';
         }
-        echo '</table></div>';
+        echo '</tbody></table></div>';
     }
 
 
 }
 $billing = new Billing();
 ?>
+<div class="col-lg-8">
 <form method="post">
-    <div class="form">
-        <div class="col-lg-2 form-group">
+    <div class="form form-group">
+        <!-- Row 1 -->
+        <div class="col-lg-3 forminput">
             <label>Voornaam</label><br>
             <input type="text" class="form-control" name="firstname"  placeholder="Voornaam">
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-3 forminput">
             <label>Achternaam</label><br>
             <input type="text" class="form-control" name="lastname"   placeholder="Achternaam">
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-3 forminput">
             <label>Emailadres</label><br>
             <input type="text" class="form-control" name="email"      placeholder="Emailadres">
         </div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-1"></div>
+        <!-- End row 1 -->
+
+        <!-- Row 2 -->
+        <div class="col-lg-3 forminput">
             <label>Telefoonnummer</label><br>
             <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer">
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-3 forminput">
             <label>Straatnaam & nummer</label><br>
             <input type="text" class="form-control" name="street"     placeholder="Straatnaam & huisnummer">
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-3 forminput">
             <label>Postcode</label><br>
             <input type="text" class="form-control" name="zipcode"    placeholder="Postcode">
         </div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-1"></div>
+        <!-- End row 2 -->
+
+        <!-- Row 3 -->
+        <div class="col-lg-3 forminput">
             <label>Plaats</label><br>
             <input type="text" class="form-control" name="place"      placeholder="Plaats">
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-3 forminput">
             <label>Land</label><br>
             <input type="text" class="form-control" name="country"    placeholder="Land">
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-3 forminput">
             <label>Bedrijf</label><br>
             <input type="text" class="form-control" name="company"    placeholder="Bedrijf">
         </div>
+        <div class="col-lg-1"></div>
+        <!-- End row 3 -->
+
+        <!-- description field -->
         <div class="col-lg-6">
             <label>Beschrijving</label><br>
             <textarea id="comment" class="form-control" rows="4" col="20" name="description"></textarea>
@@ -106,11 +119,8 @@ $billing = new Billing();
 
 
     <input class="btn btn-primary save-button" type="submit" name="submit">
-
-    <label>Beschrijving</label><br>
-    <input type="textarea">
-    <input type="submit" name="submit">
-
+        </form>
+    </div>
 </div>
 
 </form>

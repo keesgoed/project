@@ -31,7 +31,8 @@ function initDTTT(webpage) {
 function initDTTT(webpage) {
   var table = $("#table-" + webpage).DataTable();
   var tt = new $.fn.dataTable.TableTools(table, {
-    "aButtons": []
+    "aButtons": [],
+    "sRowSelect": "single"
   });
 
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
