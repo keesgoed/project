@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.3.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 08 mrt 2016 om 18:48
--- Serverversie: 5.6.26
--- PHP-versie: 5.6.12
+-- Host: localhost
+-- Gegenereerd op: 16 mrt 2016 om 11:42
+-- Serverversie: 5.7.10
+-- PHP-versie: 5.6.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Tabelstructuur voor tabel `accounts`
 --
 
-CREATE TABLE IF NOT EXISTS `accounts` (
-  `account_id` int(10) NOT NULL,
+CREATE TABLE `accounts` (
+  `accounts_id` int(10) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -36,9 +36,31 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- Gegevens worden geëxporteerd voor tabel `accounts`
 --
 
-INSERT INTO `accounts` (`account_id`, `username`, `password`) VALUES
+INSERT INTO `accounts` (`accounts_id`, `username`, `password`) VALUES
 (1, 'admin', 'easyphp'),
 (2, 'keesgoed', 'kees1111');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `addresses`
+--
+
+CREATE TABLE `addresses` (
+  `addresses_id` int(10) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `district` varchar(25) NOT NULL,
+  `city` varchar(25) NOT NULL,
+  `country` varchar(25) NOT NULL,
+  `postal_code` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `addresses`
+--
+
+INSERT INTO `addresses` (`addresses_id`, `address`, `district`, `city`, `country`, `postal_code`) VALUES
+(1, 'Stolwijkstraat', 'Zuid-Holland', 'Rotterdam', 'Nederland', '3079 DN');
 
 -- --------------------------------------------------------
 
@@ -46,19 +68,21 @@ INSERT INTO `accounts` (`account_id`, `username`, `password`) VALUES
 -- Tabelstructuur voor tabel `customers`
 --
 
-CREATE TABLE IF NOT EXISTS `customers` (
-  `customer_id` int(10) NOT NULL,
-  `company` varchar(80) NOT NULL,
+CREATE TABLE `customers` (
+  `customers_id` int(10) NOT NULL,
+  `company` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `email` varchar(80) NOT NULL,
-  `phone` varchar(15) NOT NULL,
-  `address` varchar(120) NOT NULL,
-  `city` varchar(60) NOT NULL,
-  `zipcode` varchar(12) NOT NULL,
-  `country` varchar(60) NOT NULL,
-  `signup_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `customers`
+--
+
+INSERT INTO `customers` (`customers_id`, `company`, `firstname`, `lastname`, `email`, `phone`) VALUES
+(1, 'PARTICULIER', 'Test', 'Test123', 'test123@test.com', '1234567890');
 
 -- --------------------------------------------------------
 
@@ -66,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
 -- Tabelstructuur voor tabel `offers`
 --
 
-CREATE TABLE IF NOT EXISTS `offers` (
+CREATE TABLE `offers` (
   `offer_id` int(10) NOT NULL,
   `offer_date` date NOT NULL,
   `offer_version` varchar(5) NOT NULL,
@@ -81,10 +105,16 @@ CREATE TABLE IF NOT EXISTS `offers` (
 --
 
 --
+-- Indexen voor tabel `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`addresses_id`);
+
+--
 -- Indexen voor tabel `customers`
 --
 ALTER TABLE `customers`
-  ADD PRIMARY KEY (`customer_id`);
+  ADD PRIMARY KEY (`customers_id`);
 
 --
 -- Indexen voor tabel `offers`
@@ -97,10 +127,15 @@ ALTER TABLE `offers`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `addresses`
+--
+ALTER TABLE `addresses`
+  MODIFY `addresses_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT voor een tabel `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `customers_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `offers`
 --
