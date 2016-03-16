@@ -1,6 +1,8 @@
 <?php
 class Billing extends Database{
 
+    public $errormsg;
+
     private $firstname;
     private $lastname;
     private $email;
@@ -16,8 +18,9 @@ class Billing extends Database{
     private $query_customers;
     private $result_customers;
     private $qry_insert_customer;
+    private $qry_insert_address;
 
-    public function __construct(){
+        public function __construct(){
         $this->connDatabase();
         $this->dbError();
 
@@ -42,23 +45,40 @@ class Billing extends Database{
             $this->company    =   $_POST['company'];
             $this->description=   $_POST['description'];
 
+            //Add slashes to be able to use ' in the input field
+            $this->firstname = addslashes($this->firstname);
+            $this->lastname = addslashes($this->lastname);
+            $this->company = addslashes($this->company);
+            $this->country = addslashes($this->country);
+            $this->place = addslashes($this->place);
+            $this->street = addslashes($this->street);
+            $this->description = addslashes($this->description);
 
+            // Two queries to input the data into the database
+            // Query to input into customers table
+            $this->qry_insert_customer = "INSERT INTO customers (company, firstname, lastname, email, phone, description)
+                                          VALUES ('$this->company','$this->firstname', '$this->lastname', '$this->email', '$this->phone', '$this->description')";
 
+            // Query to input into customers table
+            $this->qry_insert_address = "INSERT INTO addresses (address, city, country, postal_code)
+                                         VALUES ('$this->street','$this->place','$this->country','$this->zipcode')";
 
+            //Execute both queries
+            mysqli_query($this->db, $this->qry_insert_customer);
+            mysqli_query($this->db, $this->qry_insert_address);
         }
-
     }
 
 
     public function getCustomers(){
-
+        //Create query to retreive customers from database
         $this->query_customers = "SELECT firstname, lastname
                                   FROM customers
                                   ORDER BY firstname ASC";
 
         $this->result_customers = mysqli_query($this->db, $this->query_customers);
 
-        //table with first and lastname of customer ordered by alphabet ascending.
+        //Table with first and lastname of customer ordered by alphabet ascending.
         echo '<div class="container">
                 <div class="col-lg-4">
             <table id="table-facturatie" class="table table-striped table-bordered dt-responsive nowrap">
@@ -145,7 +165,7 @@ $billing = new Billing();
         <!-- End row 3 -->
 
         <!-- description field -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 forminput">
             <label>Beschrijving</label><br>
             <textarea id="comment" class="form-control" rows="4" col="20" name="description"></textarea>
             </div>
