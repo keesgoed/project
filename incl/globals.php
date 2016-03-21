@@ -10,6 +10,7 @@ class Globals {
   public $signout_php = "/signout.php";
   public $billing_php = "/billing.php";
   public $customers_php = "/customers.php";
+  public $customerform_php = "/customer_form.php";
   public $offers_php = "/offers.php";
   public $footer_php = "/footer.php";
   
@@ -54,6 +55,7 @@ class Globals {
     $this->signin_php = $this->signin.$this->signin_php;
     $this->billing_php = $this->webpages.$this->billing_php;
     $this->customers_php = $this->webpages.$this->customers_php;
+    $this->customerform_php = $this->webpages.$this->customerform_php;
     $this->offers_php = $this->webpages.$this->offers_php;
     $this->footer_php = $this->footer.$this->footer_php;
 

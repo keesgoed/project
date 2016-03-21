@@ -47,7 +47,7 @@ $(document).ready(function(){
     $('body').on('click','td[id]', function(){
        id = $(this).attr('id');
        id = id.substring(1);
-        console.log(id);
+
         if (id != 0){
             $.ajax({
                 type: "POST",
@@ -58,7 +58,6 @@ $(document).ready(function(){
                 success: function(data){
                     AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
                     clearInterval(AccIntv);
-                    console.log(id);
                 }
             });
         }

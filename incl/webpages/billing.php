@@ -1,5 +1,6 @@
 <?php
-class Billing extends Database{
+
+class Billing extends Database {
 
     public $errormsg;
 
@@ -89,7 +90,7 @@ class Billing extends Database{
               </thead>
               <tbody>
                 <tr>
-                    <td>(Nieuw)</td>
+                    <td id="C0">(Nieuw)</td>
                 </tr>';
         while ($this->rows = mysqli_fetch_assoc($this->result_customers)) {
             $this->customers = $this->rows;
@@ -104,13 +105,10 @@ class Billing extends Database{
 
 
 }
+
 $billing = new Billing();
 ?>
-<div class="col-lg-8">
-    <!-- form with customer info -->
-    <?php include "customer_form.php"; ?>
-</div>
-</div>
 
-</form>
+<div class="col-lg-8">
+  <?php require_once $globals->customerform_php; ?>
 </div>

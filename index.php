@@ -24,8 +24,8 @@
 
 <body>
 <?php
-include "incl/globals.php";
-include $globals->database_php;
+require_once "incl/globals.php";
+require_once $globals->database_php;
 require_once $globals->sessions_php;
 
   if(empty($_SESSION['signedin'])) {
