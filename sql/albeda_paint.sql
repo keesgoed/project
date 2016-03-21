@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Gegenereerd op: 16 mrt 2016 om 11:42
+-- Gegenereerd op: 21 mrt 2016 om 12:05
 -- Serverversie: 5.7.10
 -- PHP-versie: 5.6.17
 
@@ -49,7 +49,6 @@ INSERT INTO `accounts` (`accounts_id`, `username`, `password`) VALUES
 CREATE TABLE `addresses` (
   `addresses_id` int(10) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `district` varchar(25) NOT NULL,
   `city` varchar(25) NOT NULL,
   `country` varchar(25) NOT NULL,
   `postal_code` varchar(10) NOT NULL
@@ -59,8 +58,8 @@ CREATE TABLE `addresses` (
 -- Gegevens worden geëxporteerd voor tabel `addresses`
 --
 
-INSERT INTO `addresses` (`addresses_id`, `address`, `district`, `city`, `country`, `postal_code`) VALUES
-(1, 'Stolwijkstraat', 'Zuid-Holland', 'Rotterdam', 'Nederland', '3079 DN');
+INSERT INTO `addresses` (`addresses_id`, `address`, `city`, `country`, `postal_code`) VALUES
+(1, 'Stolwijkstraat', 'Rotterdam', 'Nederland', '3079 DN');
 
 -- --------------------------------------------------------
 

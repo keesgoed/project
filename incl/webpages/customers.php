@@ -11,31 +11,35 @@ class Customers extends Database {
     $this->connDatabase();
     $this->dbError();
     $this->qryDatabase();
-    $this->createRow();
   }
   
   public function qryDatabase() {
     $this->sql = "
       SELECT c.customers_id, c.company, c.firstname, c.lastname, c.email, c.phone, 
-             a.address, a.district, a.city, a.country, a.postal_code
+             a.address, a.city, a.country, a.postal_code
       FROM customers AS c, addresses AS a
       WHERE c.customers_id = a.addresses_id
       ORDER BY c.firstname ASC
     ";
     
     $this->query = mysqli_query($this->db, $this->sql);
-    
-    while($this->rows = mysqli_fetch_assoc($this->query)) {
-      $this->customers = $this->rows;
-    }
-    
-    $this->row = mysqli_num_rows($this->query);
   }
   
-  public function createRow() {
-    print_r($this->row);
-    while($this->row) {
-      
+  public function createRows() {
+    while($this->rows = mysqli_fetch_assoc($this->query)) {
+      echo("<tr>
+              <td>".$this->rows['customers_id']."</td>
+              <td>".$this->rows['company']."</td>
+              <td>".$this->rows['firstname']."</td>
+              <td>".$this->rows['lastname']."</td>
+              <td>".$this->rows['email']."</td>
+              <td>".$this->rows['phone']."</td>
+              <td>".$this->rows['address']."</td>
+              <td>".$this->rows['city']."</td>
+              <td>".$this->rows['country']."</td>
+              <td>".$this->rows['postal_code']."</td>
+            </tr>
+      ");
     }
   }
 }
@@ -48,30 +52,19 @@ $customers = new Customers();
     <thead>
       <tr>
         <th>Klantnummer</th>
+        <th>Bedrijf</th>
         <th>Voornaam</th>
         <th>Achternaam</th>
         <th>Email</th>
         <th>Telefoon</th>
         <th>Adres</th>
-        <th>Regio</th>
         <th>Plaats</th>
         <th>Land</th>
         <th>Postcode</th>
       </tr>
     </thead>
     <tbody>
-      <!--<tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>John</td>
-      </tr>-->
+      <?php $customers->createRows(); ?>
     </tbody>
   </table>
 </div>
