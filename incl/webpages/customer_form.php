@@ -41,14 +41,14 @@ class CustomerForm extends Database {
     }
 
     $this->firstname = $this->customers['firstname'];
-    $this->lastname;
-    $this->email;
-    $this->phone;
-    $this->street;
-    $this->zipcode;
-    $this->place;
-    $this->country;
-    $this->company;
+    $this->lastname = $this->customers['lastname'];
+    $this->email = $this->customers['email'];
+    $this->phone = $this->customers['phone'];
+    $this->street = $this->customers['address'];
+    $this->zipcode = $this->customers['postal_code'];
+    $this->place = $this->customers['city'];
+    $this->country = $this->customers['country'];
+    $this->company = $this->customers['company'];
 
   }
 }
@@ -66,12 +66,12 @@ $customer_form = new CustomerForm();
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Achternaam</label><br>
-            <input type="text" class="form-control" name="lastname"   placeholder="Achternaam" value="">
+            <input type="text" class="form-control" name="lastname"   placeholder="Achternaam" value="<?php echo $customer_form->lastname; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Emailadres</label><br>
-            <input type="text" class="form-control" name="email"      placeholder="Emailadres" value="">
+            <input type="text" class="form-control" name="email"      placeholder="Emailadres" value="<?php echo $customer_form->email; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 1 -->
@@ -79,17 +79,17 @@ $customer_form = new CustomerForm();
         <!-- Row 2 -->
         <div class="col-lg-3 forminput">
             <label>Telefoonnummer</label><br>
-            <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer" value="">
+            <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer" value="<?php echo $customer_form->phone; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
-            <label>Straatnaam & nummer</label><br>
-            <input type="text" class="form-control" name="street"     placeholder="Straatnaam & huisnummer" value="">
+            <label>Straatnaam & huisnmr</label><br>
+            <input type="text" class="form-control" name="street"     placeholder="Straatnaam & huisnummer" value="<?php echo $customer_form->street; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Postcode</label><br>
-            <input type="text" class="form-control" name="zipcode"    placeholder="Postcode" value="">
+            <input type="text" class="form-control" name="zipcode"    placeholder="Postcode" value="<?php echo $customer_form->zipcode; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 2 -->
@@ -97,17 +97,17 @@ $customer_form = new CustomerForm();
         <!-- Row 3 -->
         <div class="col-lg-3 forminput">
             <label>Plaats</label><br>
-            <input type="text" class="form-control" name="place"      placeholder="Plaats" value="">
+            <input type="text" class="form-control" name="place"      placeholder="Plaats" value="<?php echo $customer_form->place; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Land</label><br>
-            <input type="text" class="form-control" name="country"    placeholder="Land" value="">
+            <input type="text" class="form-control" name="country"    placeholder="Land" value="<?php echo $customer_form->country; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Bedrijf</label><br>
-            <input type="text" class="form-control" name="company"    placeholder="Bedrijf" value="">
+            <input type="text" class="form-control" name="company"    placeholder="Bedrijf" value="<?php echo $customer_form->company; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 3 -->
