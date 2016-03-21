@@ -42,6 +42,33 @@ function initDTTTables(webpage) {
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
 
+$(document).ready(function(){
+    $('body').on('click','td[id]', function(){
+       id = $(this).attr('id');
+       id = id.substring(1);
+        console.log(id);
+        if (id != 0){
+            $.ajax({
+                type: "POST",
+                url: "incl/webpages/customer_form.php",
+                data: {
+                    id : id
+                },
+                success: function(data){
+                    AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
+                    clearInterval(AccIntv);
+                    console.log(id);
+                }
+            });
+        }
+        else{
+            $(".right-acc").load(location.href + " .right-acc > *");
+        }
+    });
+});
+
+
+
 
 
 

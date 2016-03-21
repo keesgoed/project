@@ -72,7 +72,7 @@ class Billing extends Database{
 
     public function getCustomers(){
         //Create query to retreive customers from database
-        $this->query_customers = "SELECT firstname, lastname
+        $this->query_customers = "SELECT customers_id, firstname, lastname
                                   FROM customers
                                   ORDER BY firstname ASC";
 
@@ -93,12 +93,11 @@ class Billing extends Database{
                 </tr>';
         while ($this->rows = mysqli_fetch_assoc($this->result_customers)) {
             $this->customers = $this->rows;
-            echo '
-                <tr>
-                    <td>
-                       '.$this->customers["firstname"].' '.$this->customers["lastname"].'<br>
-                    </td>
-                </tr>';
+            echo "<tr>
+                    <td id='C".$this->customers['customers_id']."'>".$this->customers['firstname']." ".$this->customers['lastname']."</td>
+                  </tr>
+            ";
+
         }
         echo '</tbody></table></div>';
     }
@@ -108,73 +107,9 @@ class Billing extends Database{
 $billing = new Billing();
 ?>
 <div class="col-lg-8">
-<form method="post">
-    <div class="form form-group">
-        <!-- Row 1 -->
-        <div class="col-lg-3 forminput">
-            <label>Voornaam</label><br>
-            <input type="text" class="form-control" name="firstname"  placeholder="Voornaam">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3 forminput">
-            <label>Achternaam</label><br>
-            <input type="text" class="form-control" name="lastname"   placeholder="Achternaam">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3 forminput">
-            <label>Emailadres</label><br>
-            <input type="text" class="form-control" name="email"      placeholder="Emailadres">
-        </div>
-        <div class="col-lg-1"></div>
-        <!-- End row 1 -->
-
-        <!-- Row 2 -->
-        <div class="col-lg-3 forminput">
-            <label>Telefoonnummer</label><br>
-            <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3 forminput">
-            <label>Straatnaam & nummer</label><br>
-            <input type="text" class="form-control" name="street"     placeholder="Straatnaam & huisnummer">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3 forminput">
-            <label>Postcode</label><br>
-            <input type="text" class="form-control" name="zipcode"    placeholder="Postcode">
-        </div>
-        <div class="col-lg-1"></div>
-        <!-- End row 2 -->
-
-        <!-- Row 3 -->
-        <div class="col-lg-3 forminput">
-            <label>Plaats</label><br>
-            <input type="text" class="form-control" name="place"      placeholder="Plaats">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3 forminput">
-            <label>Land</label><br>
-            <input type="text" class="form-control" name="country"    placeholder="Land">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3 forminput">
-            <label>Bedrijf</label><br>
-            <input type="text" class="form-control" name="company"    placeholder="Bedrijf">
-        </div>
-        <div class="col-lg-1"></div>
-        <!-- End row 3 -->
-
-        <!-- description field -->
-        <div class="col-lg-6 forminput">
-            <label>Beschrijving</label><br>
-            <textarea id="comment" class="form-control" rows="4" col="20" name="description"></textarea>
-            </div>
-    </div>
-
-
-    <input class="btn btn-primary save-button" type="submit" name="submit">
-        </form>
-    </div>
+    <!-- form with customer info -->
+    <?php include "customer_form.php"; ?>
+</div>
 </div>
 
 </form>
