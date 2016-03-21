@@ -3,7 +3,7 @@
 class Signin extends Database {
   public $username = "Gebruikersnaam";
   public $password = "Wachtwoord";
-  
+
   private $usr;
   private $pwd;
   private $sql;
@@ -11,12 +11,12 @@ class Signin extends Database {
   private $rows;
   private $accounts;
   private $row;
-  
+
   public function __construct() {
     if(isset($_POST['signin'])) {
       $this->usrError();
       $this->pwdError();
-      
+
       if(!empty($_POST['username']) and !empty($_POST['password'])) {
         $this->connDatabase();
         $this->dbError();
@@ -27,27 +27,27 @@ class Signin extends Database {
       }
     }
   }
-  
+
   public function usrError() {
     if(empty($_POST['username'])) {
       $this->username = "Vul uw gebruiksersnaam in";
     }
   }
-  
+
   public function pwdError() {
     if(empty($_POST['password'])) {
       $this->password = "Vul uw wachtwoord in";
     }
   }
-  
+
   public function escString() {
     $this->usr = $_POST['username'];
     $this->pwd = $_POST['password'];
-    
+
     $this->usr = mysqli_real_escape_string($this->db, $this->usr);
     $this->pwd = mysqli_real_escape_string($this->db, $this->pwd);
   }
-  
+
   public function qryDatabase() {
     $this->sql = "
       SELECT a.accounts_id, a.username, a.password
@@ -55,24 +55,24 @@ class Signin extends Database {
 			WHERE a.username = '".$this->usr."'
 				AND a.password = '".$this->pwd."'
     ";
-    
+
     $this->query = mysqli_query($this->db, $this->sql);
-    
+
     while($this->rows = mysqli_fetch_assoc($this->query)) {
       $this->accounts = $this->rows;
     }
-    
+
     $this->row = mysqli_num_rows($this->query);
   }
-  
+
   public function initSession() {
     if($this->row == 1) {
       $_SESSION['signedin'] = $this->accounts;
-      
+
       header("Location: ".$_SERVER['REQUEST_URI']);
     }
   }
-  
+
   public function rowError() {
     if($this->row == 0) {
       $this->username = "Gebruikersnaam is verkeerd";

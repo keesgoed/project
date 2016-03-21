@@ -1,33 +1,87 @@
 <?php
 class Billing extends Database{
 
-    private $customername;
+    public $errormsg;
+
+    private $firstname;
+    private $lastname;
+    private $email;
+    private $phone;
+    private $street;
+    private $zipcode;
+    private $place;
+    private $country;
+    private $company;
     private $description;
-    private $subtotal;
 
     //variables to execute the first query (generate table with customers)
     private $query_customers;
     private $result_customers;
+    private $qry_insert_customer;
+    private $qry_insert_address;
 
-    public function __construct(){
+        public function __construct(){
         $this->connDatabase();
         $this->dbError();
 
+        //Execute functions
         $this->getCustomers();
+        $this->insertCustomers();
 
     }
-    public function getCustomers(){
+    //Function to insert data into a database
+    public function insertCustomers(){
 
-        $this->query_customers = "SELECT firstname, lastname
+    //Retreive variables if the form is submitted
+        if (isset($_POST['submit'])){
+            $this->firstname  =   $_POST['firstname'];
+            $this->lastname   =   $_POST['lastname'];
+            $this->email      =   $_POST['email'];
+            $this->phone      =   $_POST['phone'];
+            $this->street     =   $_POST['street'];
+            $this->zipcode    =   $_POST['zipcode'];
+            $this->place      =   $_POST['place'];
+            $this->country    =   $_POST['country'];
+            $this->company    =   $_POST['company'];
+            $this->description=   $_POST['description'];
+
+            //Add slashes to be able to use ' in the input field
+            $this->firstname = addslashes($this->firstname);
+            $this->lastname = addslashes($this->lastname);
+            $this->company = addslashes($this->company);
+            $this->country = addslashes($this->country);
+            $this->place = addslashes($this->place);
+            $this->street = addslashes($this->street);
+            $this->description = addslashes($this->description);
+
+            // Two queries to input the data into the database
+            // Query to input into customers table
+            $this->qry_insert_customer = "INSERT INTO customers (company, firstname, lastname, email, phone, description)
+                                          VALUES ('$this->company','$this->firstname', '$this->lastname', '$this->email', '$this->phone', '$this->description')";
+
+            // Query to input into customers table
+            $this->qry_insert_address = "INSERT INTO addresses (address, city, country, postal_code)
+                                         VALUES ('$this->street','$this->place','$this->country','$this->zipcode')";
+
+            //Execute both queries
+            mysqli_query($this->db, $this->qry_insert_customer);
+            mysqli_query($this->db, $this->qry_insert_address);
+        }
+    }
+
+
+    public function getCustomers(){
+        //Create query to retreive customers from database
+        $this->query_customers = "SELECT customers_id, firstname, lastname
                                   FROM customers
                                   ORDER BY firstname ASC";
 
         $this->result_customers = mysqli_query($this->db, $this->query_customers);
 
-        //table with first and lastname of customer ordered by alphabet ascending.
+        //Table with first and lastname of customer ordered by alphabet ascending.
         echo '<div class="container">
                 <div class="col-lg-4">
-            <table class="table table-striped table-bordered">
+            <table id="table-facturatie" class="table table-striped table-bordered dt-responsive nowrap">
               <thead>
                 <tr>
                     <th>Naam</th>
@@ -39,70 +93,24 @@ class Billing extends Database{
                 </tr>';
         while ($this->rows = mysqli_fetch_assoc($this->result_customers)) {
             $this->customers = $this->rows;
-            echo '
-                <tr>
-                    <td>
-                       '.$this->customers["firstname"].' '.$this->customers["lastname"].'<br>
-                    </td>
-                </tr>
-             </tbody>';
+            echo "<tr>
+                    <td id='C".$this->customers['customers_id']."'>".$this->customers['firstname']." ".$this->customers['lastname']."</td>
+                  </tr>
+            ";
+
         }
-        echo '</table></div>';
+        echo '</tbody></table></div>';
     }
 
 
 }
 $billing = new Billing();
 ?>
-<form method="post">
-    <div class="col-lg-2 form-group">
-        <label>Voornaam</label><br>
-        <input type="text" class="form-control" name="firstname"  placeholder="Voornaam">
-    </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2 form-group">
-        <label>Achternaam</label><br>
-        <input type="text" class="form-control" name="lastname"   placeholder="Achternaam">
-    </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2 form-group">
-        <label>Emailadres</label><br>
-        <input type="text" class="form-control" name="email"      placeholder="Emailadres">
-    </div>
-    <div class="col-lg-2 form-group">
-        <label>Telefoonnummer</label><br>
-        <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer">
-    </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2 form-group">
-        <label>Straatnaam & nummer</label><br>
-        <input type="text" class="form-control" name="street"     placeholder="Straatnaam & huisnummer">
-    </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2 form-group">
-        <label>Postcode</label><br>
-        <input type="text" class="form-control" name="zipcode"    placeholder="Postcode">
-    </div>
-    <div class="row">
-        <div class="col-lg-2 form-group">
-            <label>Plaats</label><br>
-            <input type="text" class="form-control" name="place"      placeholder="Plaats">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
-            <label>Land</label><br>
-            <input type="text" class="form-control" name="country"    placeholder="Land">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-2 form-group">
-            <label>Bedrijf</label><br>
-            <input type="text" class="form-control" name="company"    placeholder="Bedrijf">
-        </div>
-    </div>
-    <label>Beschrijving</label><br>
-    <input type="textarea">
-    <input type="submit" name="submit">
-
+<div class="col-lg-8">
+    <!-- form with customer info -->
+    <?php include "customer_form.php"; ?>
+</div>
+</div>
 
 </form>
 </div>
