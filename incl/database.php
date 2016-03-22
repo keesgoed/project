@@ -1,6 +1,6 @@
 <?php
 
-class Database extends Globals{
+class Database extends Globals {
   public $db;
   
   private $hostname = "localhost";
