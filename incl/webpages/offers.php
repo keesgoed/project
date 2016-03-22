@@ -19,7 +19,6 @@ $offers = new Offers();
         <th>Bedrijf</th>
         <th>Bedrag</th>
         <th>Datum</th>
-        
       </tr>
     </thead>
     <tbody>
