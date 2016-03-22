@@ -64,6 +64,7 @@ $(document).ready(function(){
         else{
             $(".right-acc").load(location.href + " .right-acc > *");
         }
+
     });
 });
 

@@ -6,23 +6,31 @@ if(isset($_POST['id'])) {
 
 class CustomerForm extends Database {
   public $firstname = "";
-  public $lastname;
-  public $email;
-  public $phone;
-  public $street;
-  public $zipcode;
-  public $place;
-  public $country;
-  public $company;
-  public $description;
+  public $lastname = "";
+  public $email = "";
+  public $phone = "";
+  public $street = "";
+  public $zipcode = "";
+  public $place = "";
+  public $country = "";
+  public $company = "";
+  public $description = "";
 
-  public function __construct() {
-    if(isset($_POST['id'])) {
-      $this->connDatabase();
-      $this->dbError();
-      
-      $this->getCustomers();
-    }
+  //ID needed for update query
+    public $id = 0;
+    public $value = 'value = "Insert"';
+
+
+  public function __construct()
+  {
+      if (isset($_POST['id'])) {
+          $this->connDatabase();
+          $this->dbError();
+
+          $this->getCustomers();
+          $this->getValue();
+          $this->updateCustomer();
+      }
   }
 
   public function getCustomers() {
@@ -51,12 +59,68 @@ class CustomerForm extends Database {
     $this->company = $this->customers['company'];
 
   }
+
+    public function updateCustomer(){
+        if($this->id >= 0) {
+            if (isset($_POST['submit'])) {
+                $this->firstname = $_POST['firstname'];
+                $this->lastname = $_POST['lastname'];
+                $this->email = $_POST['email'];
+                $this->phone = $_POST['phone'];
+                $this->street = $_POST['street'];
+                $this->zipcode = $_POST['zipcode'];
+                $this->place = $_POST['place'];
+                $this->country = $_POST['country'];
+                $this->company = $_POST['company'];
+                $this->description = $_POST['description'];
+
+                //Add slashes to be able to use ' in the input field
+                $this->firstname = addslashes($this->firstname);
+                $this->lastname = addslashes($this->lastname);
+                $this->company = addslashes($this->company);
+                $this->country = addslashes($this->country);
+                $this->place = addslashes($this->place);
+                $this->street = addslashes($this->street);
+                $this->description = addslashes($this->description);
+
+            }
+
+        //Create query to update customer
+        $this->query_update_customer = "
+        UPDATE customers, addresses
+        SET firstname = '".$this->firstname."',
+            lastname = '".$this->lastname."'
+            email = '".$this->email."'
+            phone = '".$this->phone."'
+            company = '".$this->company."'
+            address = '".$this->street."'
+            city = '".$this->place."'
+            country = '".$this->country."'
+            postal_code = '".$this->zipcode."'
+        WHERE customers_id=".$_POST['id']."
+        ";
+
+        mysqli_query($this->db, $this->query_update_customer);
+        }
+    }
+
+    //Function to retrieve the value of the button
+    public function getValue(){
+        if(isset($_POST['id'])){
+            $this->id = $_POST['id'];
+            $this->value = 'value = "Update"';
+        }else{
+            $this->id = 0;
+            $this->value = 'value = "Insert"';
+        }
+        echo $this->value;
+    }
 }
 
 $customer_form = new CustomerForm();
 ?>
 
-<form method="post">
+
     <div class="form form-group right-acc">
         <!-- Row 1 -->
         <div class="col-lg-3 forminput">
@@ -118,6 +182,5 @@ $customer_form = new CustomerForm();
             <textarea id="comment" class="form-control" rows="4" col="20" name="description" value=""></textarea>
         </div>
         
-        <input class="btn btn-primary save-button" type="submit" name="submit">
+        <input class="btn btn-primary save-button" id="submit" type="submit" name="submit" <?php echo $customer_form->getValue(); ?>>
     </div>
-</form>
