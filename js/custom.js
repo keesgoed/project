@@ -7,9 +7,11 @@ $(document).ready(function() {
   switch (webpages) {
     case "klanten":
       initDTTT(webpages);
+      $("<a href='facturatie' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
       break;
     case "offertes":
-      console.log(webpages);
+      initDTTT(webpages);
+      $("<a href='facturatie' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
       break;
     case "facturatie":
       initDTTTables(webpages);
@@ -48,7 +50,6 @@ function initDTTT(webpage) {
   });
 
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
-  $('<a href="facturatie" class="btn btn-default ctmr-btn">Klant toevoegen</a>').prependTo('div.dataTables_filter');
 }
 
 function initDTTTables(webpage) {
@@ -59,10 +60,7 @@ function initDTTTables(webpage) {
     "language": {
       "search": "Zoeken"
     }
-
   });
-
-  $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
 
 

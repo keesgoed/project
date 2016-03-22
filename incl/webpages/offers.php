@@ -15,16 +15,11 @@ $offers = new Offers();
     <thead>
       <tr>
         <th>Klantnummer</th>
+        <th>Offertenummer</th>
         <th>Bedrijf</th>
-        <th>Voornaam</th>
-        <th>Achternaam</th>
-        <th>Email</th>
-        <th>Telefoon</th>
-        <th>Adres</th>
-        <th>Plaats</th>
-        <th>Land</th>
-        <th>Postcode</th>
-        <th>Beschrijving</th>
+        <th>Bedrag</th>
+        <th>Datum</th>
+        
       </tr>
     </thead>
     <tbody>
