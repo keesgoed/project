@@ -2,6 +2,10 @@ body {
   font-size: 140%; 
 }
 
+.edit-btn {
+  margin-right: 10px;
+}
+
 /* Datatables_tableTools */
 div.DTTT { 
   margin-bottom: 0.5em; 

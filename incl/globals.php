@@ -2,6 +2,7 @@
 
 class Globals {
   protected $project = "/albeda_paint";
+  protected $home = "/klanten";
   
   public $database_php = "/database.php";
   public $sessions_php = "/sessions.php";
