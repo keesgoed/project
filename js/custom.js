@@ -1,20 +1,42 @@
-$(document).ready(function(){
+$(document).ready(function() {
   var pathname = window.location.pathname; // Returns path only
   var paths = pathname.split("/");
 
   var webpages = paths[2];
 
-  switch(webpages) {
+  switch (webpages) {
     case "klanten":
-        initDTTT(webpages);
-        break;
+      initDTTT(webpages);
+      break;
     case "offertes":
-        console.log(webpages);
-        break;
+      console.log(webpages);
+      break;
     case "facturatie":
-        initDTTTables(webpages);
-        break; 
+      initDTTTables(webpages);
+      break;
   }
+
+  $('body').on('click', 'td[id]', function() {
+    id = $(this).attr('id');
+    id = id.substring(1);
+
+    if (id != 0) {
+      $.ajax({
+        type: "POST",
+        url: "incl/webpages/customer_form.php",
+        data: {
+          id: id
+        },
+        success: function(data) {
+          AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
+          clearInterval(AccIntv);
+        }
+      });
+    }
+    else {
+      $(".right-acc").load(location.href + " .right-acc > *");
+    }
+  });
 });
 
 
@@ -25,47 +47,23 @@ function initDTTT(webpage) {
     "aButtons": ["xls", "pdf", "print"]
   });
 
-
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
+  $('<a href="facturatie" class="btn btn-default ctmr-btn">Klant toevoegen</a>').prependTo('div.dataTables_filter');
 }
 
 function initDTTTables(webpage) {
   var table = $("#table-" + webpage).DataTable();
   var tt = new $.fn.dataTable.TableTools(table, {
-      "aButtons": [],
-      "sRowSelect": "single",
-      "language": {
-          "search": "Zoeken"
-      }
+    "aButtons": [],
+    "sRowSelect": "single",
+    "language": {
+      "search": "Zoeken"
+    }
 
   });
 
   $(tt.fnContainer()).insertBefore("div.dataTables_wrapper");
 }
-
-$(document).ready(function(){
-    $('body').on('click','td[id]', function(){
-       id = $(this).attr('id');
-       id = id.substring(1);
-
-        if (id != 0){
-            $.ajax({
-                type: "POST",
-                url: "incl/webpages/customer_form.php",
-                data: {
-                    id : id
-                },
-                success: function(data){
-                    AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
-                    clearInterval(AccIntv);
-                }
-            });
-        }
-        else{
-            $(".right-acc").load(location.href + " .right-acc > *");
-        }
-    });
-});
 
 
 
