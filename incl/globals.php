@@ -21,7 +21,6 @@ class Globals {
   private $signin = "/signin";
   private $webpages = "/webpages";
   private $footer = "/footer";
-
   
   private $loc_incl = "incl";
   private $loc_signin = "/signin";
