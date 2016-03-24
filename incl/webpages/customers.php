@@ -4,9 +4,7 @@ class Customers extends Database {
   private $sql;
   private $query;
   private $rows;
-  private $customers;
-  private $row;
-  
+
   public function __construct() {
     $this->connDatabase();
     $this->dbError();

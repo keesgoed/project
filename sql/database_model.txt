@@ -32,7 +32,6 @@ customers_invoice
 offers
 	- offers_id
 	- offer_date
-	- offer_version
 	- offer_description
 	- offer_template
 	- offer_subtotal_price
