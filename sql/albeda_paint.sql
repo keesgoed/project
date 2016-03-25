@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Gegenereerd op: 21 mrt 2016 om 12:05
+-- Gegenereerd op: 22 mrt 2016 om 22:15
 -- Serverversie: 5.7.10
 -- PHP-versie: 5.6.17
 
@@ -59,7 +59,7 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`addresses_id`, `address`, `city`, `country`, `postal_code`) VALUES
-(1, 'Stolwijkstraat', 'Rotterdam', 'Nederland', '3079 DN');
+(1, 'Stolwijkstraat 47', 'Rotterdam', 'Nederland', '3079 DN');
 
 -- --------------------------------------------------------
 
@@ -73,15 +73,16 @@ CREATE TABLE `customers` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` varchar(15) NOT NULL
+  `phone` varchar(15) NOT NULL,
+  `description` varchar(250) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `customers`
 --
 
-INSERT INTO `customers` (`customers_id`, `company`, `firstname`, `lastname`, `email`, `phone`) VALUES
-(1, 'PARTICULIER', 'Test', 'Test123', 'test123@test.com', '1234567890');
+INSERT INTO `customers` (`customers_id`, `company`, `firstname`, `lastname`, `email`, `phone`, `description`) VALUES
+(1, 'PARTICULIER', 'Test', 'Test123', 'test123@test.com', '1234567890', 'TEST TEST TEST ');
 
 -- --------------------------------------------------------
 

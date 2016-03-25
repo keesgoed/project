@@ -4,9 +4,7 @@ class Customers extends Database {
   private $sql;
   private $query;
   private $rows;
-  private $customers;
-  private $row;
-  
+
   public function __construct() {
     $this->connDatabase();
     $this->dbError();
@@ -15,7 +13,7 @@ class Customers extends Database {
   
   public function qryDatabase() {
     $this->sql = "
-      SELECT c.customers_id, c.company, c.firstname, c.lastname, c.email, c.phone, 
+      SELECT c.customers_id, c.company, c.firstname, c.lastname, c.email, c.phone, c.description,
              a.address, a.city, a.country, a.postal_code
       FROM customers AS c, addresses AS a
       WHERE c.customers_id = a.addresses_id
@@ -30,14 +28,14 @@ class Customers extends Database {
       echo("<tr>
               <td>".$this->rows['customers_id']."</td>
               <td>".$this->rows['company']."</td>
-              <td>".$this->rows['firstname']."</td>
-              <td>".$this->rows['lastname']."</td>
+              <td>".$this->rows['firstname']." ".$this->rows['lastname']."</td>
               <td>".$this->rows['email']."</td>
               <td>".$this->rows['phone']."</td>
               <td>".$this->rows['address']."</td>
               <td>".$this->rows['city']."</td>
               <td>".$this->rows['country']."</td>
               <td>".$this->rows['postal_code']."</td>
+              <td>".$this->rows['description']."</td>
             </tr>
       ");
     }
@@ -53,14 +51,14 @@ $customers = new Customers();
       <tr>
         <th>Klantnummer</th>
         <th>Bedrijf</th>
-        <th>Voornaam</th>
-        <th>Achternaam</th>
+        <th>Naam</th>
         <th>Email</th>
         <th>Telefoon</th>
         <th>Adres</th>
         <th>Plaats</th>
         <th>Land</th>
         <th>Postcode</th>
+        <th>Beschrijving</th>
       </tr>
     </thead>
     <tbody>
