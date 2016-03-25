@@ -1,6 +1,6 @@
-Order Deny,Allow 
+Order Deny,Allow
 Allow from All
- 
+
 <Files "signout.php"> 
   Order Deny,Allow 
   Allow from All 
