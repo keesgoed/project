@@ -112,10 +112,8 @@ class CustomerForm extends Database {
     public function getValue($id) {
         if ($id != 0){
             $this->value = "updateCustomer(".$id.")";
-            include "queries/update.php";
         } else {
-            $this->value = "updateCustomer(".$id.")";
-            include "queries/insert.php";
+            $this->value = "insertCustomer(".$id.")";
         }
         echo $this->value;
     }
@@ -148,17 +146,17 @@ $customer_form = new CustomerForm();
         <!-- Row 1 -->
         <div class="col-lg-3 forminput">
             <label>Voornaam</label><br>
-            <input type="text" class="form-control" name="firstname"  placeholder="Voornaam" value="<?php echo $customer_form->firstname; ?>">
+            <input type="text" class="form-control" name="firstname"  id="first-cust" placeholder="Voornaam" value="<?php echo $customer_form->firstname; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Achternaam</label><br>
-            <input type="text" class="form-control" name="lastname"   placeholder="Achternaam" value="<?php echo $customer_form->lastname; ?>">
+            <input type="text" class="form-control" name="lastname"  id="last-cust"  placeholder="Achternaam" value="<?php echo $customer_form->lastname; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Emailadres</label><br>
-            <input type="text" class="form-control" name="email"      placeholder="Emailadres" value="<?php echo $customer_form->email; ?>">
+            <input type="text" class="form-control" name="email" id="email-cust"     placeholder="Emailadres" value="<?php echo $customer_form->email; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 1 -->
@@ -166,17 +164,17 @@ $customer_form = new CustomerForm();
         <!-- Row 2 -->
         <div class="col-lg-3 forminput">
             <label>Telefoonnummer</label><br>
-            <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer" value="<?php echo $customer_form->phone; ?>">
+            <input type="text" class="form-control" name="phone" id="phone-cust" placeholder="Telefoonnummer" value="<?php echo $customer_form->phone; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Straatnaam & huisnmr</label><br>
-            <input type="text" class="form-control" name="street"     placeholder="Straatnaam & huisnummer" value="<?php echo $customer_form->street; ?>">
+            <input type="text" class="form-control" name="street" id="street-cust"     placeholder="Straatnaam & huisnummer" value="<?php echo $customer_form->street; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Postcode</label><br>
-            <input type="text" class="form-control" name="zipcode"    placeholder="Postcode" value="<?php echo $customer_form->zipcode; ?>">
+            <input type="text" class="form-control" name="zipcode"  id="zipcode-cust"   placeholder="Postcode" value="<?php echo $customer_form->zipcode; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 2 -->
@@ -184,17 +182,17 @@ $customer_form = new CustomerForm();
         <!-- Row 3 -->
         <div class="col-lg-3 forminput">
             <label>Plaats</label><br>
-            <input type="text" class="form-control" name="place"      placeholder="Plaats" value="<?php echo $customer_form->place; ?>">
+            <input type="text" class="form-control" name="place" id="place-cust"     placeholder="Plaats" value="<?php echo $customer_form->place; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Land</label><br>
-            <input type="text" class="form-control" name="country"    placeholder="Land" value="<?php echo $customer_form->country; ?>">
+            <input type="text" class="form-control" name="country" id="country-cust"    placeholder="Land" value="<?php echo $customer_form->country; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Bedrijf</label><br>
-            <input type="text" class="form-control" name="company"    placeholder="Bedrijf" value="<?php echo $customer_form->company; ?>">
+            <input type="text" class="form-control" name="company"  id="company-cust"   placeholder="Bedrijf" value="<?php echo $customer_form->company; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 3 -->
@@ -202,8 +200,9 @@ $customer_form = new CustomerForm();
         <!-- description field -->
         <div class="col-lg-6 forminput">
             <label>Beschrijving</label><br>
-            <textarea id="comment" class="form-control" rows="4" col="20" name="description" value=""></textarea>
+            <textarea id="comment description-cust" class="form-control" rows="4" col="20" name="description" value=""></textarea>
         </div>
         
-        <input class="btn btn-primary save-button" id="submit" type="submit" name="submit" onclick="<?php if(isset($_POST['id'])){ echo $customer_form->getValue($_POST['id']);}?>">
+        <input class="btn btn-primary save-button"  value="<?php echo (isset($_POST['id']) ? "Update" : "Insert"); ?>"
+               onclick="<?php echo (isset($_POST['id']) ? "updateCustomer(".$_POST['id'].")" : "insertCustomer()"); ?>">
     </div>

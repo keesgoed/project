@@ -1,5 +1,4 @@
 <?php
-if(isset($_POST['submit'])) {
 //Declare variables
     $this->firstname = $_POST['firstname'];
     $this->lastname = $_POST['lastname'];
@@ -33,5 +32,5 @@ if(isset($_POST['submit'])) {
 //Execute both queries
     mysqli_query($this->db, $this->qry_insert_customer);
     mysqli_query($this->db, $this->qry_insert_address);
-    }
+
 ?>

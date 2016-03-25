@@ -30,8 +30,7 @@ $(document).ready(function() {
           id: id
         },
         success: function(data) {
-          AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
-          clearInterval(AccIntv);
+         $(".right-acc").replaceWith(data);
         }
       });
     }
@@ -63,43 +62,55 @@ function initDTTTables(webpage) {
   });
 }
 
-
-
 function updateCustomer(id) {
-      $.ajax({
-          type: "POST",
-          url: "incl/webpages/customer_form.php",
-          data: {
-              id : id
-          }
-      })
+  $.ajax({
+    type: "POST",
+    url: "incl/webpages/queries/update.php",
+    data: {
+      id : id
+    },
+    success: function(data) {
+      $(".right-acc").replaceWith(data);
+    }
+  });
+}
+
+function insertCustomer() {
+  firstname =  $("#first-cust").val();
+  lastname =   $("#last-cust").val();
+
+  email =      $("#email-cust").val();
+  zipcode =    $("#zipcode-cust").val();
+  phone =      $("#phone-cust").val();
+  street =     $("#street-cust").val();
+  place =      $("#place-cust").val();
+  country =    $("#country-cust").val();
+  company =    $("#company-cust").val();
+
+  if(firstname != '' && lastname != ''){
+    $.ajax({
+      type: "POST",
+      url: "incl/webpages/queries/insert.php",
+      data: {
+        firstname : firstname,
+        lastname : lastname,
+        email : email,
+        zipcode : zipcode,
+        phone : phone,
+        street : street,
+        place : place,
+        country : country,
+        company : company
+      },
+      success: function(data) {
+        // $(".right-acc").replaceWith(data);
+      }
+    });
   }
-
-
-// $(document).ready(function(){
-//     $('body').on('click','td[id]', function(){
-//        id = $(this).attr('id');
-//        id = id.substring(1);
-
-//         if (id != 0){
-//             $.ajax({
-//                 type: "POST",
-//                 url: "incl/webpages/customer_form.php",
-//                 data: {
-//                     id : id
-//                 },
-//                 success: function(data){
-//                     AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
-//                     clearInterval(AccIntv);
-//                 }
-//             });
-//         }
-//         else{
-//             $(".right-acc").load(location.href + " .right-acc > *");
-//         }
-
-//     });
-// });
+  else{
+    alert('Vul alle velden in.');
+  }
+}
 
 
 
