@@ -114,7 +114,8 @@ class CustomerForm extends Database {
             $this->value = "updateCustomer(".$id.")";
             include "queries/update.php";
         } else {
-            $this->value = "insertCustomer(".$id.")";
+            $this->value = "updateCustomer(".$id.")";
+            include "queries/insert.php";
         }
         echo $this->value;
     }
@@ -130,7 +131,7 @@ class CustomerForm extends Database {
             }else{
                 $this->id=0;
             }
-            if ($this->id == 0){
+            if ($id == 0){
             include "queries/insert.php";
             } else {
             include "queries/update.php";
