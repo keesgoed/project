@@ -112,6 +112,7 @@ class CustomerForm extends Database {
     public function getValue($id) {
         if ($id != 0){
             $this->value = "updateCustomer(".$id.")";
+            include "queries/update.php";
         } else {
             $this->value = "insertCustomer(".$id.")";
         }
@@ -120,7 +121,7 @@ class CustomerForm extends Database {
 
 
 //Function to insert data into a database
-    public function changeCustomers()
+    public function changeCustomers($id)
     {
         //Retreive variables if the form is submitted
         if (isset($_POST['submit'])) {
@@ -130,9 +131,9 @@ class CustomerForm extends Database {
                 $this->id=0;
             }
             if ($this->id == 0){
-            include "sql/insert.php";
+            include "queries/insert.php";
             } else {
-            include "sql/update.php";
+            include "queries/update.php";
             }
         }
     }

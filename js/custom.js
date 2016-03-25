@@ -79,30 +79,30 @@ function updateCustomer(id) {
     }
 }
 
-// $(document).ready(function(){
-//     $('body').on('click','td[id]', function(){
-//        id = $(this).attr('id');
-//        id = id.substring(1);
+$(document).ready(function(){
+    $('body').on('click','td[id]', function(){
+       id = $(this).attr('id');
+       id = id.substring(1);
 
-//         if (id != 0){
-//             $.ajax({
-//                 type: "POST",
-//                 url: "incl/webpages/customer_form.php",
-//                 data: {
-//                     id : id
-//                 },
-//                 success: function(data){
-//                     AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
-//                     clearInterval(AccIntv);
-//                 }
-//             });
-//         }
-//         else{
-//             $(".right-acc").load(location.href + " .right-acc > *");
-//         }
+        if (id != 0){
+            $.ajax({
+                type: "POST",
+                url: "incl/webpages/customer_form.php",
+                data: {
+                    id : id
+                },
+                success: function(data){
+                    AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
+                    clearInterval(AccIntv);
+                }
+            });
+        }
+        else{
+            $(".right-acc").load(location.href + " .right-acc > *");
+        }
 
-//     });
-// });
+    });
+});
 
 
 
