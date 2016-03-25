@@ -68,6 +68,19 @@ $(document).ready(function(){
     });
 });
 
+function updateCustomer(id) {
+    if (id != 0){
+        $.ajax({
+            type: "POST",
+            url: "incl/webpages/customer_form.php",
+            data: {
+                id : id
+            }
+        })
+    }else{
+
+    }
+}
 
 
 
