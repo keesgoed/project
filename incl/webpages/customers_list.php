@@ -41,7 +41,7 @@ class Billing extends Database {
 
         //Table with first and lastname of customer ordered by alphabet ascending.
         echo '<div class="container">
-                <div class="col-lg-4">
+                <div class="col-lg-4" id="left-acc">
             <table id="table-facturatie" class="table table-striped table-bordered dt-responsive nowrap">
               <thead>
                 <tr>

@@ -62,30 +62,18 @@ function initDTTTables(webpage) {
   });
 }
 
-function updateCustomer(id) {
-  $.ajax({
-    type: "POST",
-    url: "incl/webpages/queries/update.php",
-    data: {
-      id : id
-    },
-    success: function(data) {
-      $(".right-acc").replaceWith(data);
-    }
-  });
-}
-
 function insertCustomer() {
-  firstname =  $("#first-cust").val();
-  lastname =   $("#last-cust").val();
+  firstname =   $("#first-cust").val();
+  lastname =    $("#last-cust").val();
 
-  email =      $("#email-cust").val();
-  zipcode =    $("#zipcode-cust").val();
-  phone =      $("#phone-cust").val();
-  street =     $("#street-cust").val();
-  place =      $("#place-cust").val();
-  country =    $("#country-cust").val();
-  company =    $("#company-cust").val();
+  email =       $("#email-cust").val();
+  zipcode =     $("#zipcode-cust").val();
+  phone =       $("#phone-cust").val();
+  street =      $("#street-cust").val();
+  place =       $("#place-cust").val();
+  country =     $("#country-cust").val();
+  company =     $("#company-cust").val();
+  description = $("#description-cust").val();
 
   if(firstname != '' && lastname != ''){
     $.ajax({
@@ -100,10 +88,52 @@ function insertCustomer() {
         street : street,
         place : place,
         country : country,
-        company : company
+        company : company,
+        description : description
       },
       success: function(data) {
-        // $(".right-acc").replaceWith(data);
+        location.reload();
+      }
+    });
+  }
+  else{
+    alert('Vul alle velden in.');
+  }
+}
+
+
+function updateCustomer(id) {
+  firstname =   $("#first-cust").val();
+  lastname =    $("#last-cust").val();
+
+  email =       $("#email-cust").val();
+  zipcode =     $("#zipcode-cust").val();
+  phone =       $("#phone-cust").val();
+  street =      $("#street-cust").val();
+  place =       $("#place-cust").val();
+  country =     $("#country-cust").val();
+  company =     $("#company-cust").val();
+  description = $("#description-cust").val();
+
+  if(firstname != '' && lastname != ''){
+    $.ajax({
+      type: "POST",
+      url: "incl/webpages/queries/update.php",
+      data: {
+        id : id,
+        firstname : firstname,
+        lastname : lastname,
+        email : email,
+        zipcode : zipcode,
+        phone : phone,
+        street : street,
+        place : place,
+        country : country,
+        company : company,
+        description : description
+      },
+      success: function(data) {
+        location.reload();
       }
     });
   }
