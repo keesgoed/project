@@ -7,7 +7,7 @@ $(document).ready(function() {
   switch (webpages) {
     case "klanten":
       initDTTT(webpages);
-      $("<a href='facturatie' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
+      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
       break;
     case "offertes":
       initDTTT(webpages);
@@ -18,6 +18,7 @@ $(document).ready(function() {
       break;
       case "offerte-aanmaken":
       initDTTTables(webpages);
+        $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant aanmaken</a>").appendTo("div#left-acc-offer");
       break;
   }
 

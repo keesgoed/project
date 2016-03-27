@@ -37,10 +37,7 @@ class OfferList extends Database {
                     <th>Naam</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                    <td id="C0">(Nieuw)</td>
-                </tr>';
+              <tbody>';
         while ($this->rows = mysqli_fetch_assoc($this->result_customers)) {
             $this->customers = $this->rows;
             echo "<tr>
@@ -60,6 +57,6 @@ $offer_list = new OfferList();
 
 <div class="col-lg-8">
     <form method="post">
-        <?php require_once $globals->customerform_php; ?>
+        <?php require_once $globals->offerform_php; ?>
     </form>
 </div>
