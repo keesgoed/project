@@ -1,27 +1,16 @@
 <?php
 
-class CustomerList extends Database {
+class OfferList extends Database {
 
     public $errormsg;
 
-    private $firstname;
-    private $lastname;
-    private $email;
-    private $phone;
-    private $street;
-    private $zipcode;
-    private $place;
-    private $country;
-    private $company;
-    private $description;
 
     //variables to execute the first query (generate table with customers)
     private $query_customers;
     private $result_customers;
-    private $qry_insert_customer;
-    private $qry_insert_address;
 
-        public function __construct(){
+
+    public function __construct(){
         $this->connDatabase();
         $this->dbError();
 
@@ -41,8 +30,8 @@ class CustomerList extends Database {
 
         //Table with first and lastname of customer ordered by alphabet ascending.
         echo '<div class="container">
-                <div class="col-lg-4" id="left-acc">
-            <table id="table-klant-aanmaken" class="table table-striped table-bordered dt-responsive nowrap">
+                <div class="col-lg-4" id="left-acc-offer">
+            <table id="table-offerte-aanmaken" class="table table-striped table-bordered dt-responsive nowrap">
               <thead>
                 <tr>
                     <th>Naam</th>
@@ -66,11 +55,11 @@ class CustomerList extends Database {
 
 }
 
-$customer_list = new CustomerList();
+$offer_list = new OfferList();
 ?>
 
 <div class="col-lg-8">
     <form method="post">
-  <?php require_once $globals->customerform_php; ?>
+        <?php require_once $globals->customerform_php; ?>
     </form>
 </div>

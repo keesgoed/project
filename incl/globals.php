@@ -10,7 +10,7 @@ class Globals {
   public $signin_php = "/signin.php";
   public $signout_php = "/signout.php";
   public $customerlist_php = "/customers_list.php";
-  public $offerlist_php = "/offers_list.php";
+  public $offerlist_php = "/offer_list.php";
   public $offerform_php = "/offer_form.php";
   public $customers_php = "/customers.php";
   public $customerform_php = "/customer_form.php";

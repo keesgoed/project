@@ -13,7 +13,7 @@ $(document).ready(function() {
       initDTTT(webpages);
       $("<a href='offerte-aanmaken' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
       break;
-    case "facturatie":
+    case "klant-aanmaken":
       initDTTTables(webpages);
       break;
       case "offerte-aanmaken":
