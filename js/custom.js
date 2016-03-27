@@ -11,9 +11,12 @@ $(document).ready(function() {
       break;
     case "offertes":
       initDTTT(webpages);
-      $("<a href='facturatie' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
+      $("<a href='offerte-aanmaken' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
       break;
     case "facturatie":
+      initDTTTables(webpages);
+      break;
+      case "offerte-aanmaken":
       initDTTTables(webpages);
       break;
   }

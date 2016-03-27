@@ -44,8 +44,11 @@ require_once $globals->sessions_php;
         case 'offertes':
           require_once $globals->offers_php;
           break;
-        case 'facturatie':
-          require_once $globals->billing_php;
+        case 'klant-aanmaken':
+          require_once $globals->customerlist_php;
+          break;
+        case 'offerte-aanmaken':
+          require_once $globals->offerlist_php;
           break;
       }
     }

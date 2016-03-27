@@ -9,7 +9,9 @@ class Globals {
   public $nav_php = "/nav.php";
   public $signin_php = "/signin.php";
   public $signout_php = "/signout.php";
-  public $billing_php = "/customers_list.php";
+  public $customerlist_php = "/customers_list.php";
+  public $offerlist_php = "/offers_list.php";
+  public $offerform_php = "/offer_form.php";
   public $customers_php = "/customers.php";
   public $customerform_php = "/customer_form.php";
   public $offers_php = "/offers.php";
@@ -53,10 +55,13 @@ class Globals {
     
     $this->nav_php = $this->header.$this->nav_php;
     $this->signin_php = $this->signin.$this->signin_php;
-    $this->billing_php = $this->webpages.$this->billing_php;
-    $this->customers_php = $this->webpages.$this->customers_php;
-    $this->customerform_php = $this->webpages.$this->customerform_php;
     $this->offers_php = $this->webpages.$this->offers_php;
+    $this->offerlist_php = $this->webpages.$this->offerlist_php;
+    $this->offerform_php = $this->webpages.$this->offerform_php;
+    $this->customers_php = $this->webpages.$this->customers_php;
+    $this->customerlist_php = $this->webpages.$this->customerlist_php;
+    $this->customerform_php = $this->webpages.$this->customerform_php;
+   
     $this->footer_php = $this->footer.$this->footer_php;
 
   }
