@@ -36,7 +36,7 @@ class QueryInsertOffer extends Database
 
     public function insertDB(){
         // Query to input into offers table
-        $this->qry_insert_offer = "INSERT INTO offers (customer_id, offer_date, offer_description, offer_subtotal_price)
+        $this->qry_insert_offer = "INSERT INTO offers (customers_id, offers_date, offers_description, offers_subtotal_price)
                                      VALUES ('$this->id','$this->date','$this->description','$this->price')";
 
         //Execute query
