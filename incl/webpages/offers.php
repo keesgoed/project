@@ -14,7 +14,7 @@ class Offers extends Database {
   
   public function qryDatabase() {
     $this->sql = "
-      SELECT o.offers_id, o.customers_id, o.offers_subtotal_price, o.offers_date, 
+      SELECT o.offers_id, o.customers_id, o.offers_subtotal_price, o.offers_description, o.offers_date, 
              c.company 
       FROM offers AS o, customers AS c
       WHERE o.customers_id = c.customers_id
@@ -30,8 +30,8 @@ class Offers extends Database {
               <td>".$this->rows['customers_id']."</td>
               <td>".$this->rows['company']."</td>
               <td>".$this->rows['offers_subtotal_price']."</td>
+              <td>".$this->rows['offers_description']."</td>
               <td>".$this->rows['offers_date']."</td>
-              <td>Link</td>
             </tr>
       ");
     }
@@ -49,8 +49,8 @@ $offers = new Offers();
         <th>Klantnummer</th>
         <th>Bedrijf</th>
         <th>Bedrag</th>
+        <th>Beschrijving</th>
         <th>Datum</th>
-        <th>Link</th>
       </tr>
     </thead>
     <tbody>

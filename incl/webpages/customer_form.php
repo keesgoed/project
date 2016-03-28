@@ -16,11 +16,9 @@ class CustomerForm extends Database {
     public $country = "";
     public $company = "";
     public $description = "";
-
-    //ID needed for update query
-    public $id;
-    public $value;
-
+    
+    public $value = "Insert";
+    public $onclick = "insertCustomer();";
 
     public function __construct()
     {
@@ -32,6 +30,7 @@ class CustomerForm extends Database {
 
         if (isset($_POST['id'])) {
             $this->getCustomers();
+            $this->changeInput();
         }
     }
 
@@ -62,42 +61,20 @@ class CustomerForm extends Database {
         $this->company = $this->customers['company'];
 
     }
-
-    //Function to retrieve the value of the button
-    public function getValue($id) {
-        if ($id != 0){
-            $this->value = "updateCustomer(".$id.")";
-        } else {
-            $this->value = "insertCustomer(".$id.")";
-        }
-        echo $this->value;
-    }
-
-
-//Function to insert data into a database
-    public function changeCustomers($id)
-    {
-        //Retreive variables if the form is submitted
-        if (isset($_POST['submit'])) {
-            if(isset($_POST['id'])) {
-                $this->id = $_POST['id'];
-            }else{
-                $this->id=0;
-            }
-            if ($id == 0){
-            include "queries/insert_customer.php";
-            } else {
-            include "queries/update_customer.php";
-            }
-        }
+    
+    public function changeInput() {
+      $this->value = "Update";
+      $this->onclick = "updateCustomer(".$_POST['id'].");";
     }
 }
 
 $customer_form = new CustomerForm();
 ?>
 
+<div class="col-lg-8 right-acc">
+    <form method="post">
 
-    <div class="form form-group right-acc">
+    <div class="form form-group">
         <!-- Row 1 -->
         <div class="col-lg-3 forminput">
             <label>Voornaam</label><br>
@@ -158,6 +135,7 @@ $customer_form = new CustomerForm();
             <textarea id="comment description-cust" class="form-control" rows="4" col="20" name="description" value=""></textarea>
         </div>
         
-        <input class="btn btn-primary save-button"  value="<?php echo (isset($_POST['id']) ? "Update" : "Insert"); ?>"
-               onclick="<?php echo (isset($_POST['id']) ? "updateCustomer(".$_POST['id'].")" : "insertCustomer()"); ?>">
+        <input class="btn btn-primary save-button"  value="<?php echo $customer_form->value; ?>" onclick="<?php echo $customer_form->onclick; ?>">
     </div>
+</form>
+</div>

@@ -5,10 +5,10 @@ require_once $globals->database_php;
 class QueryInsertOffer extends Database
 {
 
-    public $description = "";
-    public $price = "";
+    public $description;
+    public $price;
     public $date;
-    public $id = "";
+    public $id;
 
     public function __construct()
     {
@@ -20,7 +20,7 @@ class QueryInsertOffer extends Database
         $this->insertDB();
 
     }
-    public function decVar($id){
+    public function decVar(){
         //Declare variables
         $this->description = $_POST['description'];
         $this->price = $_POST['price'];
@@ -37,12 +37,12 @@ class QueryInsertOffer extends Database
     public function insertDB(){
         // Query to input into offers table
         $this->qry_insert_offer = "INSERT INTO offers (customers_id, offers_date, offers_description, offers_subtotal_price)
-                                     VALUES ('$this->id','$this->date','$this->description','$this->price')";
+                                     VALUES (".$this->id.", '".$this->date."', '".$this->description."', '".$this->price."')";
 
         //Execute query
         mysqli_query($this->db, $this->qry_insert_offer);
     }
 }
-$query_insert_offer = new QueryInsertOffer();
 
+$query_insert_offer = new QueryInsertOffer();
 ?>

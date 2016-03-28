@@ -7,59 +7,59 @@ $(document).ready(function() {
   switch (webpages) {
     case "klanten":
       initDTTT(webpages);
-      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
+      $("<a href='klant_toevoegen' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
       break;
     case "offertes":
       initDTTT(webpages);
-      $("<a href='offerte-aanmaken' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
+      $("<a href='offerte_toevoegen' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
       break;
-    case "klant-aanmaken":
+    case "klant_toevoegen":
       initDTTTables(webpages);
       break;
-    case "offerte-aanmaken":
+    case "offerte_toevoegen":
       initDTTTables(webpages);
-      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant toevoegen</a>").appendTo("div#left-acc-offer");
+      $("<a href='klant_toevoegen' class='btn btn-default edit-btn'>Klant toevoegen</a>").appendTo("div#left-cstmr");
       break;
   }
 
-  $('#left-acc').on('click', 'td[id]', function () {
+  $('body').on('click', 'td[id]', function() {
     id = $(this).attr('id');
+    idString = id.substring(0, 1);
     id = id.substring(1);
 
-    if (id != 0) {
-      $.ajax({
-        type: "POST",
-        url: "incl/webpages/customer_form.php",
-        data: {
-          id: id
-        },
-        success: function (data) {
-          $(".right-acc").replaceWith(data);
-        }
-      });
+    if (idString == 'k') {
+      if (id != 0) {
+        $.ajax({
+          type: "POST",
+          url: "incl/webpages/customer_form.php",
+          data: {
+            id: id
+          },
+          success: function(data) {
+            $(".right-acc").replaceWith(data);
+          }
+        });
+      }
+      else {
+        $(".right-acc").load(location.href + " .right-acc > *");
+      }
     }
-    else {
-      $(".right-acc").load(location.href + " .right-acc > *");
-    }
-  });
-
-  $('#left-acc-offer').on('click', 'td[id]', function () {
-    id = $(this).attr('id');
-    id = id.substring(1);
-
-    if (id != 0) {
-      $.ajax({
-        type: "POST",
-        url: "incl/webpages/offer_submit.php",
-        data: {
-          id: id
-        },
-        success: function (data) {
-          $("#right-acc-btn").replaceWith(data);
-        }
-      });
-    } else {
-      alert('Selecteer een klant.');
+    else if (idString == 'o') {
+      if (id != 0) {
+        $.ajax({
+          type: "POST",
+          url: "incl/webpages/offer_submit.php",
+          data: {
+            id: id
+          },
+          success: function(data) {
+            $("#right-acc-btn").replaceWith(data);
+          }
+        });
+      }
+      else {
+        alert('Selecteer een klant.');
+      }
     }
   });
 });
@@ -88,81 +88,81 @@ function initDTTTables(webpage) {
 }
 
 function insertCustomer() {
-  firstname =   $("#first-cust").val();
-  lastname =    $("#last-cust").val();
+  firstname = $("#first-cust").val();
+  lastname = $("#last-cust").val();
 
-  email =       $("#email-cust").val();
-  zipcode =     $("#zipcode-cust").val();
-  phone =       $("#phone-cust").val();
-  street =      $("#street-cust").val();
-  place =       $("#place-cust").val();
-  country =     $("#country-cust").val();
-  company =     $("#company-cust").val();
+  email = $("#email-cust").val();
+  zipcode = $("#zipcode-cust").val();
+  phone = $("#phone-cust").val();
+  street = $("#street-cust").val();
+  place = $("#place-cust").val();
+  country = $("#country-cust").val();
+  company = $("#company-cust").val();
   description = $("#description-cust").val();
 
-  if(firstname != '' && lastname != ''){
+  if (firstname != '' && lastname != '') {
     $.ajax({
       type: "POST",
       url: "incl/webpages/queries/insert_customer.php",
       data: {
-        firstname : firstname,
-        lastname : lastname,
-        email : email,
-        zipcode : zipcode,
-        phone : phone,
-        street : street,
-        place : place,
-        country : country,
-        company : company,
-        description : description
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        zipcode: zipcode,
+        phone: phone,
+        street: street,
+        place: place,
+        country: country,
+        company: company,
+        description: description
       },
       success: function(data) {
         location.reload();
       }
     });
   }
-  else{
+  else {
     alert('Vul alle velden in.');
   }
 }
 
 
 function updateCustomer(id) {
-  firstname =   $("#first-cust").val();
-  lastname =    $("#last-cust").val();
+  firstname = $("#first-cust").val();
+  lastname = $("#last-cust").val();
 
-  email =       $("#email-cust").val();
-  zipcode =     $("#zipcode-cust").val();
-  phone =       $("#phone-cust").val();
-  street =      $("#street-cust").val();
-  place =       $("#place-cust").val();
-  country =     $("#country-cust").val();
-  company =     $("#company-cust").val();
+  email = $("#email-cust").val();
+  zipcode = $("#zipcode-cust").val();
+  phone = $("#phone-cust").val();
+  street = $("#street-cust").val();
+  place = $("#place-cust").val();
+  country = $("#country-cust").val();
+  company = $("#company-cust").val();
   description = $("#description-cust").val();
 
-  if(firstname != '' && lastname != ''){
+  if (firstname != '' && lastname != '') {
     $.ajax({
       type: "POST",
       url: "incl/webpages/queries/update_customer.php",
       data: {
-        id : id,
-        firstname : firstname,
-        lastname : lastname,
-        email : email,
-        zipcode : zipcode,
-        phone : phone,
-        street : street,
-        place : place,
-        country : country,
-        company : company,
-        description : description
+        id: id,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        zipcode: zipcode,
+        phone: phone,
+        street: street,
+        place: place,
+        country: country,
+        company: company,
+        description: description
       },
       success: function(data) {
         location.reload();
       }
     });
   }
-  else{
+  else {
     alert('Vul alle velden in.');
   }
 }
@@ -171,26 +171,28 @@ function insertOffer(id) {
   description = $("#description-offer").val();
   price = $("#price-offer").val();
 
-  if(description != '' && price != ''){
+  if (description != '' && price != '') {
     $.ajax({
       type: "POST",
       url: "incl/webpages/queries/insert_offer.php",
       data: {
-        id : id,
-        price : price,
-        description : description
+        id: id,
+        price: price,
+        description: description
       },
       success: function(data) {
-        location.reload();
+        console.log(data);
+        // location.reload();
       }
     });
   }
-  else{
+  else {
     alert('Vul alle velden in.');
   }
 }
-function errorOffer(){
-  alert ("Selecteer een klant.");
+
+function errorOffer() {
+  alert("Selecteer een klant.");
 }
 
 

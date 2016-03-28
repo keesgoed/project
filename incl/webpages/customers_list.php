@@ -1,8 +1,9 @@
 <?php
 
-class CustomerList extends Database {
+class CustomersList extends Database {
 
     public $errormsg;
+    private $id;
 
     private $firstname;
     private $lastname;
@@ -21,13 +22,18 @@ class CustomerList extends Database {
     private $qry_insert_customer;
     private $qry_insert_address;
 
-        public function __construct(){
+    public function __construct(){
         $this->connDatabase();
         $this->dbError();
 
         //Execute functions
+        $this->idString();
         $this->getCustomers();
 
+    }
+    
+    public function idString() {
+      $this->id = substr($_GET['page'], 0, 1);
     }
 
 
@@ -41,21 +47,24 @@ class CustomerList extends Database {
 
         //Table with first and lastname of customer ordered by alphabet ascending.
         echo '<div class="container">
-                <div class="col-lg-4" id="left-acc">
-            <table id="table-klant-aanmaken" class="table table-striped table-bordered dt-responsive nowrap">
+                <div class="col-lg-4" id="left-cstmr">
+            <table id="table-'.$_GET['page'].'" class="table table-striped table-bordered dt-responsive nowrap">
               <thead>
                 <tr>
                     <th>Naam</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                    <td id="C0">(Nieuw)</td>
-                </tr>';
+              <tbody>';
+        if ($this->id == 'k') {
+          echo "<tr>
+                  <td id='".$this->id."0'>(Nieuw)</td>
+                </tr>
+          ";
+        }
         while ($this->rows = mysqli_fetch_assoc($this->result_customers)) {
             $this->customers = $this->rows;
             echo "<tr>
-                    <td id='C".$this->customers['customers_id']."'>".$this->customers['firstname']." ".$this->customers['lastname']."</td>
+                    <td id='".$this->id.$this->customers['customers_id']."'>".$this->customers['firstname']." ".$this->customers['lastname']."</td>
                   </tr>
             ";
 
@@ -66,11 +75,5 @@ class CustomerList extends Database {
 
 }
 
-$customer_list = new CustomerList();
+$customers_list = new CustomersList();
 ?>
-
-<div class="col-lg-8">
-    <form method="post">
-  <?php require_once $globals->customerform_php; ?>
-    </form>
-</div>
