@@ -7,14 +7,18 @@ $(document).ready(function() {
   switch (webpages) {
     case "klanten":
       initDTTT(webpages);
-      $("<a href='facturatie' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
+      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
       break;
     case "offertes":
       initDTTT(webpages);
-      $("<a href='facturatie' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
+      $("<a href='offerte-aanmaken' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
       break;
-    case "facturatie":
+    case "klant-aanmaken":
       initDTTTables(webpages);
+      break;
+      case "offerte-aanmaken":
+      initDTTTables(webpages);
+        $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant aanmaken</a>").appendTo("div#left-acc-offer");
       break;
   }
 
@@ -22,6 +26,8 @@ $(document).ready(function() {
     id = $(this).attr('id');
     id = id.substring(1);
 
+    switch (webpages) {
+      case "klant-aanmaken":
     if (id != 0) {
       $.ajax({
         type: "POST",
@@ -29,14 +35,32 @@ $(document).ready(function() {
         data: {
           id: id
         },
-        success: function(data) {
-         $(".right-acc").replaceWith(data);
+        success: function (data) {
+          $(".right-acc").replaceWith(data);
         }
       });
     }
     else {
       $(".right-acc").load(location.href + " .right-acc > *");
     }
+    break;
+  case "offerte-aanmaken":
+       if (id != 0){
+         $.ajax({
+           type: "POST",
+           url: "incl/webpages/offer_form.php",
+           data: {
+             id: id
+           },
+           success: function (data) {
+             $(".right-acc-offer").replaceWith(data);
+           }
+         });
+       }else{
+         alert('Selecteer een klant.');
+       }
+  }
+
   });
 });
 
@@ -78,7 +102,7 @@ function insertCustomer() {
   if(firstname != '' && lastname != ''){
     $.ajax({
       type: "POST",
-      url: "incl/webpages/queries/insert.php",
+      url: "incl/webpages/queries/insert_customer.php",
       data: {
         firstname : firstname,
         lastname : lastname,
@@ -118,7 +142,7 @@ function updateCustomer(id) {
   if(firstname != '' && lastname != ''){
     $.ajax({
       type: "POST",
-      url: "incl/webpages/queries/update.php",
+      url: "incl/webpages/queries/update_customer.php",
       data: {
         id : id,
         firstname : firstname,
@@ -130,6 +154,29 @@ function updateCustomer(id) {
         place : place,
         country : country,
         company : company,
+        description : description
+      },
+      success: function(data) {
+        location.reload();
+      }
+    });
+  }
+  else{
+    alert('Vul alle velden in.');
+  }
+}
+
+function insertOffer(id) {
+  description = $("#description-offer").val();
+  price = $("#price-offer").val();
+
+  if(description != '' && price != ''){
+    $.ajax({
+      type: "POST",
+      url: "incl/webpages/queries/insert_offer.php",
+      data: {
+        id : id,
+        price : price,
         description : description
       },
       success: function(data) {

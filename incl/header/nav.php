@@ -6,7 +6,8 @@
           <ul class="navbar-nav nav">
             <li><a href="klanten">Klanten</a></li>
             <li><a href="offertes">Offertes</a></li>
-            <li><a href="facturatie">Facturatie</a></li>
+            <li><a href="klant-aanmaken">Klant aanmaken</a></li>
+            <li><a href="offerte-aanmaken">Offerte aanmaken</a></li>
           </ul>
         </div>
         
