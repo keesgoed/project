@@ -30,8 +30,7 @@ $(document).ready(function() {
           id: id
         },
         success: function(data) {
-          $(".right-acc").replaceWith(data);
-          clearInterval(AccIntv);
+         $(".right-acc").replaceWith(data);
         }
       });
     }
@@ -63,31 +62,86 @@ function initDTTTables(webpage) {
   });
 }
 
+function insertCustomer() {
+  firstname =   $("#first-cust").val();
+  lastname =    $("#last-cust").val();
 
-// $(document).ready(function(){
-//     $('body').on('click','td[id]', function(){
-//        id = $(this).attr('id');
-//        id = id.substring(1);
+  email =       $("#email-cust").val();
+  zipcode =     $("#zipcode-cust").val();
+  phone =       $("#phone-cust").val();
+  street =      $("#street-cust").val();
+  place =       $("#place-cust").val();
+  country =     $("#country-cust").val();
+  company =     $("#company-cust").val();
+  description = $("#description-cust").val();
 
-//         if (id != 0){
-//             $.ajax({
-//                 type: "POST",
-//                 url: "incl/webpages/customer_form.php",
-//                 data: {
-//                     id : id
-//                 },
-//                 success: function(data){
-//                     AccIntv = setInterval($(".right-acc").replaceWith(data), 1000);
-//                     clearInterval(AccIntv);
-//                 }
-//             });
-//         }
-//         else{
-//             $(".right-acc").load(location.href + " .right-acc > *");
-//         }
+  if(firstname != '' && lastname != ''){
+    $.ajax({
+      type: "POST",
+      url: "incl/webpages/queries/insert.php",
+      data: {
+        firstname : firstname,
+        lastname : lastname,
+        email : email,
+        zipcode : zipcode,
+        phone : phone,
+        street : street,
+        place : place,
+        country : country,
+        company : company,
+        description : description
+      },
+      success: function(data) {
+        location.reload();
+      }
+    });
+  }
+  else{
+    alert('Vul alle velden in.');
+  }
+}
 
-//     });
-// });
+
+function updateCustomer(id) {
+  firstname =   $("#first-cust").val();
+  lastname =    $("#last-cust").val();
+
+  email =       $("#email-cust").val();
+  zipcode =     $("#zipcode-cust").val();
+  phone =       $("#phone-cust").val();
+  street =      $("#street-cust").val();
+  place =       $("#place-cust").val();
+  country =     $("#country-cust").val();
+  company =     $("#company-cust").val();
+  description = $("#description-cust").val();
+
+  if(firstname != '' && lastname != ''){
+    $.ajax({
+      type: "POST",
+      url: "incl/webpages/queries/update.php",
+      data: {
+        id : id,
+        firstname : firstname,
+        lastname : lastname,
+        email : email,
+        zipcode : zipcode,
+        phone : phone,
+        street : street,
+        place : place,
+        country : country,
+        company : company,
+        description : description
+      },
+      success: function(data) {
+        location.reload();
+      }
+    });
+  }
+  else{
+    alert('Vul alle velden in.');
+  }
+}
+
 
 
 
