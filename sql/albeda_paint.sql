@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.3.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Gegenereerd op: 28 mrt 2016 om 18:27
--- Serverversie: 5.7.10
--- PHP-versie: 5.6.17
+-- Host: 127.0.0.1
+-- Gegenereerd op: 28 mrt 2016 om 18:40
+-- Serverversie: 10.1.8-MariaDB
+-- PHP-versie: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -93,10 +93,9 @@ INSERT INTO `customers` (`customers_id`, `company`, `firstname`, `lastname`, `em
 CREATE TABLE `offers` (
   `offers_id` int(10) NOT NULL,
   `customers_id` int(10) NOT NULL,
-  `offers_subtotal_price` double NOT NULL,
-  `offers_total_price` double NOT NULL,
+  `offers_subtotal_price` double(10,2) NOT NULL,
   `offers_description` varchar(2500) NOT NULL,
-  `offers_date` date NOT NULL,
+  `offers_date` varchar(15) NOT NULL,
   `offers_template` enum('template_01','template_02','template_03','') NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -104,8 +103,8 @@ CREATE TABLE `offers` (
 -- Gegevens worden geëxporteerd voor tabel `offers`
 --
 
-INSERT INTO `offers` (`offers_id`, `customers_id`, `offers_subtotal_price`, `offers_total_price`, `offers_description`, `offers_date`, `offers_template`) VALUES
-(1, 1, 276.49, 349.99, 'TEST TEST TEST', '2016-03-23', 'template_01');
+INSERT INTO `offers` (`offers_id`, `customers_id`, `offers_subtotal_price`, `offers_description`, `offers_date`, `offers_template`) VALUES
+(1, 1, 276.49, 'TEST TEST TEST', '2016-03-23', 'template_01');
 
 --
 -- Indexen voor geëxporteerde tabellen
