@@ -18,7 +18,7 @@ $(document).ready(function() {
       break;
     case "offerte-aanmaken":
       initDTTTables(webpages);
-      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant aanmaken</a>").appendTo("div#left-acc-offer");
+      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant toevoegen</a>").appendTo("div#left-acc-offer");
       break;
   }
 

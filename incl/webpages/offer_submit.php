@@ -43,6 +43,6 @@ class OfferForm extends Database {
 
 $offer_form = new OfferForm();
 ?>
-
-<input type="submit" id="right-acc-btn" class="btn btn-primary offerbtn" onclick="(<?php echo (isset($_POST['id']) ? "insertOffer(".$_POST['id'].")" : "errorOffer()");  ?>)"  value="Opslaan">
-
+<div class="col-lg-2">
+<input id="right-acc-btn" class="btn btn-primary offerbtn" onclick="(<?php echo (isset($_POST['id']) ? "insertOffer(".$_POST['id'].")" : "errorOffer()");  ?>)"  value="Opslaan">
+</div>
