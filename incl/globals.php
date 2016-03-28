@@ -4,6 +4,7 @@ class Globals {
   protected $project = "/albeda_paint";
   protected $home = "/klanten";
   
+  public $fpdf_php = "/fpdf.php";
   public $database_php = "/database.php";
   public $sessions_php = "/sessions.php";
   public $nav_php = "/nav.php";
@@ -16,6 +17,8 @@ class Globals {
   public $footer_php = "/footer.php";
   
   private $root;
+  private $ext = "/ext";
+  private $fpdf = "/fpdf";
   private $incl = "/incl";
   private $header = "/header";
   private $signin = "/signin";
@@ -34,8 +37,10 @@ class Globals {
   }
   
   public function dirPaths() {
-    $this->incl = $this->root.$this->incl;
+    $this->ext = $this->root.$this->ext;
+    $this->fpdf = $this->ext.$this->fpdf;
     
+    $this->incl = $this->root.$this->incl;
     $this->header = $this->incl.$this->header;
     $this->signin = $this->incl.$this->signin;
     $this->webpages = $this->incl.$this->webpages;
@@ -48,9 +53,10 @@ class Globals {
   }
   
   public function inclScripts() {
+    $this->fpdf_php = $this->fpdf.$this->fpdf_php;
+    
     $this->database_php = $this->incl.$this->database_php;
     $this->sessions_php = $this->incl.$this->sessions_php;
-    
     $this->nav_php = $this->header.$this->nav_php;
     $this->signin_php = $this->signin.$this->signin_php;
     $this->billing_php = $this->webpages.$this->billing_php;

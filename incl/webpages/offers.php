@@ -1,4 +1,5 @@
 <?php
+require_once $globals->fpdf_php;
 
 class Offers extends Database {
   private $sql;
@@ -30,6 +31,7 @@ class Offers extends Database {
               <td>".$this->rows['company']."</td>
               <td>".$this->rows['offers_total_price']."</td>
               <td>".$this->rows['offers_date']."</td>
+              <td>Link</td>
             </tr>
       ");
     }
@@ -48,6 +50,7 @@ $offers = new Offers();
         <th>Bedrijf</th>
         <th>Bedrag</th>
         <th>Datum</th>
+        <th>Link</th>
       </tr>
     </thead>
     <tbody>
