@@ -18,7 +18,7 @@ $(document).ready(function() {
       break;
     case "offerte_toevoegen":
       initDTTTables(webpages);
-      $("<a href='klant_toevoegen' class='btn btn-default edit-btn'>Klant toevoegen</a>").appendTo("div#left-cstmr");
+      $("<a href='klant_toevoegen' class='btn btn-default btn-right'>Klant toevoegen</a>").appendTo("div#left-cstmr");
       break;
   }
 
