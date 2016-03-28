@@ -10,6 +10,7 @@
         <label>Totaalprijs</label><br>
         <input type="text" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="">
     </div>
+    <div class="col-lg-4"></div>
     
     <?php require_once "offer_submit.php" ?>
 </div>

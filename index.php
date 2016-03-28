@@ -53,8 +53,8 @@ require_once $globals->sessions_php;
       }
     }
     
-    // Footer
-    // require_once $globals->footer_php;
+//     Footer
+//     require_once $globals->footer_php;
   }
 ?>  
 
