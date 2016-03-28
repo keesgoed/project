@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Gegenereerd op: 22 mrt 2016 om 22:15
+-- Gegenereerd op: 28 mrt 2016 om 18:27
 -- Serverversie: 5.7.10
 -- PHP-versie: 5.6.17
 
@@ -91,14 +91,21 @@ INSERT INTO `customers` (`customers_id`, `company`, `firstname`, `lastname`, `em
 --
 
 CREATE TABLE `offers` (
-  `offer_id` int(10) NOT NULL,
-  `offer_date` date NOT NULL,
-  `offer_version` varchar(5) NOT NULL,
-  `offer_description` varchar(2000) NOT NULL,
-  `offer_template` varchar(3) NOT NULL,
-  `offer_subtotal_price` int(15) NOT NULL,
-  `offer_total_price` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `offers_id` int(10) NOT NULL,
+  `customers_id` int(10) NOT NULL,
+  `offers_subtotal_price` double NOT NULL,
+  `offers_total_price` double NOT NULL,
+  `offers_description` varchar(2500) NOT NULL,
+  `offers_date` date NOT NULL,
+  `offers_template` enum('template_01','template_02','template_03','') NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `offers`
+--
+
+INSERT INTO `offers` (`offers_id`, `customers_id`, `offers_subtotal_price`, `offers_total_price`, `offers_description`, `offers_date`, `offers_template`) VALUES
+(1, 1, 276.49, 349.99, 'TEST TEST TEST', '2016-03-23', 'template_01');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -120,7 +127,7 @@ ALTER TABLE `customers`
 -- Indexen voor tabel `offers`
 --
 ALTER TABLE `offers`
-  ADD PRIMARY KEY (`offer_id`);
+  ADD PRIMARY KEY (`offers_id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
@@ -140,7 +147,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT voor een tabel `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `offer_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `offers_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
