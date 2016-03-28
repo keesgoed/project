@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 28 mrt 2016 om 18:40
+-- Gegenereerd op: 28 mrt 2016 om 20:00
 -- Serverversie: 10.1.8-MariaDB
 -- PHP-versie: 5.6.14
 
@@ -59,7 +59,8 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`addresses_id`, `address`, `city`, `country`, `postal_code`) VALUES
-(1, 'Stolwijkstraat 47', 'Rotterdam', 'Nederland', '3079 DN');
+(1, 'Stolwijkstraat 47', 'Rotterdam', 'Nederland', '3079 DN'),
+(2, 'A. van Bronckhorststraat 6', 'stad aan''t haringvliet', 'Nederland', '3243AR');
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customers_id`, `company`, `firstname`, `lastname`, `email`, `phone`, `description`) VALUES
-(1, 'PARTICULIER', 'Test', 'Test123', 'test123@test.com', '1234567890', 'TEST TEST TEST ');
+(1, 'PARTICULIER', 'kees', 'Test123', 'test123@test.com', '1234567890', 'TEST TEST TEST '),
+(2, 'Just In Kees', 'Kees', 'Goedegebuure', 'keesgoed@hotmail.com', '0657223401', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,7 @@ CREATE TABLE `offers` (
   `customers_id` int(10) NOT NULL,
   `offers_subtotal_price` double(10,2) NOT NULL,
   `offers_description` varchar(2500) NOT NULL,
-  `offers_date` varchar(15) NOT NULL,
+  `offers_date` varchar(16) NOT NULL,
   `offers_template` enum('template_01','template_02','template_03','') NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -104,7 +106,10 @@ CREATE TABLE `offers` (
 --
 
 INSERT INTO `offers` (`offers_id`, `customers_id`, `offers_subtotal_price`, `offers_description`, `offers_date`, `offers_template`) VALUES
-(1, 1, 276.49, 'TEST TEST TEST', '2016-03-23', 'template_01');
+(1, 1, 276.49, 'TEST TEST TEST', '2016-03-23', 'template_01'),
+(2, 1, 18.23, 'test offerte', '28-03-2016 18:4', 'template_01'),
+(3, 1, 123.12, '123', '28-03-2016 19:5', 'template_01'),
+(4, 2, 123.00, '123', '28-03-2016 19:59', 'template_01');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -136,17 +141,17 @@ ALTER TABLE `offers`
 -- AUTO_INCREMENT voor een tabel `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `addresses_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `addresses_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customers_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customers_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `offers_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `offers_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
