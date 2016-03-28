@@ -181,8 +181,7 @@ function insertOffer(id) {
         description: description
       },
       success: function(data) {
-        console.log(data);
-        // location.reload();
+        location.reload();
       }
     });
   }
