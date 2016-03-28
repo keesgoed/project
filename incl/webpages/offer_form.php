@@ -5,95 +5,35 @@ if(isset($_POST['id'])) {
 }
 
 
-class CustomerForm extends Database {
-    public $firstname = "";
-    public $lastname = "";
-    public $email = "";
-    public $phone = "";
-    public $street = "";
-    public $zipcode = "";
-    public $place = "";
-    public $country = "";
-    public $company = "";
+class OfferForm extends Database {
     public $description = "";
+    public $price = "";
+    public $date;
 
     //ID needed for update query
     public $id;
     public $value;
 
-
     public function __construct()
     {
-
         $this->connDatabase();
         $this->dbError();
 
-        //$this->changeCustomers();
-
-        if (isset($_POST['id'])) {
-            $this->getCustomers();
-        }
+        $this->insertOffer();
     }
+    
 
-    public function getCustomers()
+
+//Function to insert data into the database
+    public function insertOffer()
     {
-        //Create query to retreive customers from database
-        $this->query_customers = "
-      SELECT *
-      FROM customers, addresses
-      WHERE customers_id = addresses_id
-          AND customers_id = " . $_POST['id'] . "
-    ";
-
-        $this->result_customers = mysqli_query($this->db, $this->query_customers);
-
-        while ($this->row = mysqli_fetch_assoc($this->result_customers)) {
-            $this->customers = $this->row;
-        }
-        //Declare fields in input fields
-        $this->firstname = $this->customers['firstname'];
-        $this->lastname = $this->customers['lastname'];
-        $this->email = $this->customers['email'];
-        $this->phone = $this->customers['phone'];
-        $this->street = $this->customers['address'];
-        $this->zipcode = $this->customers['postal_code'];
-        $this->place = $this->customers['city'];
-        $this->country = $this->customers['country'];
-        $this->company = $this->customers['company'];
-
-    }
-
-    //Function to retrieve the value of the button
-    public function getValue($id) {
-        if ($id != 0){
-            $this->value = "updateCustomer(".$id.")";
-        } else {
-            $this->value = "insertCustomer(".$id.")";
-        }
-        echo $this->value;
-    }
-
-
-//Function to insert data into a database
-    public function changeCustomers($id)
-    {
-        //Retreive variables if the form is submitted
-        if (isset($_POST['submit'])) {
-            if(isset($_POST['id'])) {
-                $this->id = $_POST['id'];
-            }else{
-                $this->id=0;
-            }
-            if ($id == 0){
-                include "queries/insert.php";
-            } else {
-                include "queries/update.php";
-            }
+        if (isset($_POST['submit'])){
+            include "queries/insert_offer.php";
         }
     }
 }
 
-$customer_form = new CustomerForm();
+$offer_form = new OfferForm();
 ?>
 
 
@@ -101,7 +41,7 @@ $customer_form = new CustomerForm();
 
     <div class="col-lg-11 forminput">
         <label>Omschrijving kosten</label><br>
-        <textarea id="comment description-cust" class="form-control" rows="15" col="20" name="description" value=""></textarea>
+        <textarea id="description-offer" name="description" class="form-control" rows="15" col="20" ></textarea>
     </div>
 
     <div class="col-lg-1"></div>
@@ -110,5 +50,5 @@ $customer_form = new CustomerForm();
         <input type="text" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="">
     </div>
     
-    <input class="btn btn-primary"  value="Opslaan">
+    <input type="submit" class="btn btn-primary" onclick="(<?php echo (isset($_POST['id']) ? "insertOffer(".$_POST['id'].")" : "test");  ?>)"  value="Opslaan">
 </div>

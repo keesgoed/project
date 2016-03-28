@@ -85,9 +85,9 @@ class CustomerForm extends Database {
                 $this->id=0;
             }
             if ($id == 0){
-            include "queries/insert.php";
+            include "queries/insert_customer.php";
             } else {
-            include "queries/update.php";
+            include "queries/update_customer.php";
             }
         }
     }
