@@ -24,7 +24,8 @@ class Globals {
   private $incl = "/incl";
   private $header = "/header";
   private $signin = "/signin";
-  private $webpages = "/webpages";
+  private $customers = "/customers";
+  private $offers = "/offers";
   private $footer = "/footer";
   
   private $loc_incl = "incl";
@@ -45,7 +46,8 @@ class Globals {
     $this->incl = $this->root.$this->incl;
     $this->header = $this->incl.$this->header;
     $this->signin = $this->incl.$this->signin;
-    $this->webpages = $this->incl.$this->webpages;
+    $this->customers = $this->incl.$this->customers;
+    $this->offers = $this->incl.$this->offers;
     $this->footer = $this->incl.$this->footer;
 
   }
@@ -61,12 +63,12 @@ class Globals {
     $this->sessions_php = $this->incl.$this->sessions_php;
     $this->nav_php = $this->header.$this->nav_php;
     $this->signin_php = $this->signin.$this->signin_php;
-    $this->customers_php = $this->webpages.$this->customers_php;
-    $this->customerslist_php = $this->webpages.$this->customerslist_php;
-    $this->customerform_php = $this->webpages.$this->customerform_php;
-    $this->offers_php = $this->webpages.$this->offers_php;
-    $this->offerform_php = $this->webpages.$this->offerform_php;
-    $this->offersubmit_php = $this->webpages.$this->offersubmit_php;
+    $this->customers_php = $this->customers.$this->customers_php;
+    $this->customerslist_php = $this->customers.$this->customerslist_php;
+    $this->customerform_php = $this->customers.$this->customerform_php;
+    $this->offers_php = $this->offers.$this->offers_php;
+    $this->offerform_php = $this->offers.$this->offerform_php;
+    $this->offersubmit_php = $this->offers.$this->offersubmit_php;
     $this->footer_php = $this->footer.$this->footer_php;
 
   }

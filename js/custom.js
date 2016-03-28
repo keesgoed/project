@@ -31,7 +31,7 @@ $(document).ready(function() {
       if (id != 0) {
         $.ajax({
           type: "POST",
-          url: "incl/webpages/customer_form.php",
+          url: "incl/customers/customer_form.php",
           data: {
             id: id
           },
@@ -48,7 +48,7 @@ $(document).ready(function() {
       if (id != 0) {
         $.ajax({
           type: "POST",
-          url: "incl/webpages/offer_submit.php",
+          url: "incl/offers/offer_submit.php",
           data: {
             id: id
           },
@@ -103,7 +103,7 @@ function insertCustomer() {
   if (firstname != '' && lastname != '') {
     $.ajax({
       type: "POST",
-      url: "incl/webpages/queries/insert_customer.php",
+      url: "incl/customers/sql/insert_customer.php",
       data: {
         firstname: firstname,
         lastname: lastname,
@@ -143,7 +143,7 @@ function updateCustomer(id) {
   if (firstname != '' && lastname != '') {
     $.ajax({
       type: "POST",
-      url: "incl/webpages/queries/update_customer.php",
+      url: "incl/customers/sql/update_customer.php",
       data: {
         id: id,
         firstname: firstname,
@@ -174,7 +174,7 @@ function insertOffer(id) {
   if (description != '' && price != '') {
     $.ajax({
       type: "POST",
-      url: "incl/webpages/queries/insert_offer.php",
+      url: "incl/offers/sql/insert_offer.php",
       data: {
         id: id,
         price: price,
