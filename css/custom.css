@@ -15,7 +15,6 @@ div.dataTables_wrapper {
   clear: both; 
 }
 
-
 /* Footer */
 footer {
   background-color:#e7e7e7;
@@ -42,5 +41,8 @@ footer {
 }
 .offerbtn{
     margin-top:40px;
-    margin-left:385px;
+    margin-left:17px;
+}
+.float-right{
+    float:right;
 }
