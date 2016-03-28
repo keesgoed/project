@@ -27,8 +27,16 @@ class OfferForm extends Database {
 //Function to insert data into the database
     public function insertOffer()
     {
-        if (isset($_POST['submit'])){
-            include "queries/insert_offer.php";
+
+        if(isset($_POST['offer_id'])){
+            
+            if (isset($_POST['submit'])){
+                include "queries/insert_offer.php";
+            }
+        } else{
+            if(isset($_POST['submit'])){
+                include "queries/update_offer.php";
+            }
         }
     }
 }
@@ -50,5 +58,5 @@ $offer_form = new OfferForm();
         <input type="text" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="">
     </div>
     
-    <input type="submit" class="btn btn-primary" onclick="(<?php echo (isset($_POST['id']) ? "insertOffer(".$_POST['id'].")" : "test");  ?>)"  value="Opslaan">
+    <input type="submit" class="btn btn-primary offerbtn" onclick="(<?php echo (isset($_POST['id']) ? "insertOffer(".$_POST['id'].")" : "test");  ?>)"  value="Opslaan">
 </div>

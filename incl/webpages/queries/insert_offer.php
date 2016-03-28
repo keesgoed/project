@@ -24,15 +24,16 @@ class QueryInsertOffer extends Database
         //Declare variables
         $this->description = $_POST['description'];
         $this->price = $_POST['price'];
-        $this->date = date("Y-m-d H:i");
+        $this->date = date("d-m-Y H:i");
         $this->id = $_POST['id'];
     }
+
     public function addSlash(){
         //Add slashes to be able to use ' in the input field
         $this->description = addslashes($this->description);
         $this->price = str_replace(',', '.', $this->price);
-
     }
+
     public function insertDB(){
         // Query to input into offers table
         $this->qry_insert_offer = "INSERT INTO offers (customer_id, offer_date, offer_description, offer_subtotal_price)
