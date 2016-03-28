@@ -16,18 +16,16 @@ $(document).ready(function() {
     case "klant-aanmaken":
       initDTTTables(webpages);
       break;
-      case "offerte-aanmaken":
+    case "offerte-aanmaken":
       initDTTTables(webpages);
-        $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant aanmaken</a>").appendTo("div#left-acc-offer");
+      $("<a href='klant-aanmaken' class='btn btn-default edit-btn'>Klant aanmaken</a>").appendTo("div#left-acc-offer");
       break;
   }
 
-  $('body').on('click', 'td[id]', function() {
+  $('#left-acc').on('click', 'td[id]', function () {
     id = $(this).attr('id');
     id = id.substring(1);
 
-    switch (webpages) {
-      case "klant-aanmaken":
     if (id != 0) {
       $.ajax({
         type: "POST",
@@ -43,26 +41,29 @@ $(document).ready(function() {
     else {
       $(".right-acc").load(location.href + " .right-acc > *");
     }
-    break;
-  case "offerte-aanmaken":
-       if (id != 0){
-         $.ajax({
-           type: "POST",
-           url: "incl/webpages/offer_form.php",
-           data: {
-             id: id
-           },
-           success: function (data) {
-             $(".right-acc-offer").replaceWith(data);
-           }
-         });
-       }else{
-         alert('Selecteer een klant.');
-       }
-  }
+  });
 
+  $('#left-acc-offer').on('click', 'td[id]', function () {
+    id = $(this).attr('id');
+    id = id.substring(1);
+
+    if (id != 0) {
+      $.ajax({
+        type: "POST",
+        url: "incl/webpages/offer_submit.php",
+        data: {
+          id: id
+        },
+        success: function (data) {
+          $("#right-acc-btn").replaceWith(data);
+        }
+      });
+    } else {
+      alert('Selecteer een klant.');
+    }
   });
 });
+
 
 
 function initDTTT(webpage) {
@@ -188,6 +189,10 @@ function insertOffer(id) {
     alert('Vul alle velden in.');
   }
 }
+function errorOffer(){
+  alert ("Selecteer een klant.");
+}
+
 
 
 

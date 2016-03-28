@@ -1,7 +1,7 @@
 Order Deny,Allow
 Deny from All
 
-<FilesMatch "(signout|customer_form|offer_form)\.php$">
+<FilesMatch "(signout|customer_form|offer_submit)\.php$">
   Order Deny,Allow 
   Allow from All 
 </FilesMatch>
