@@ -38,7 +38,7 @@ class QueryUpdate extends Database
         $this->place = $_POST['place'];
         $this->country = $_POST['country'];
         $this->company = $_POST['company'];
-//        $this->description = $_POST['description'];
+        $this->description = $_POST['description'];
     }
     
     public function addSlash()
@@ -66,7 +66,8 @@ class QueryUpdate extends Database
             address = '" . $this->street . "',
             city = '" . $this->place . "',
             country = '" . $this->country . "',
-            postal_code = '" . $this->zipcode . "'
+            postal_code = '" . $this->zipcode . "',
+            description = '" . $this->description . "'
         WHERE customers_id=" . $_POST['id'] . " AND addresses_id=".$_POST['id']."
 "; 
         //Execute query

@@ -14,7 +14,7 @@ class CustomerForm extends Database {
     public $zipcode = "";
     public $place = "";
     public $country = "";
-    public $company = "";
+    public $company = "PARTICULIER";
     public $description = "";
     
     public $value = "Insert";
@@ -59,6 +59,7 @@ class CustomerForm extends Database {
         $this->place = $this->customers['city'];
         $this->country = $this->customers['country'];
         $this->company = $this->customers['company'];
+        $this->description = $this->customers['description'];
 
     }
     
@@ -77,12 +78,12 @@ $customer_form = new CustomerForm();
     <div class="form form-group">
         <!-- Row 1 -->
         <div class="col-lg-3 forminput">
-            <label>Voornaam</label><br>
+            <label>Voornaam *</label><br>
             <input type="text" class="form-control" name="firstname"  id="first-cust" placeholder="Voornaam" value="<?php echo $customer_form->firstname; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
-            <label>Achternaam</label><br>
+            <label>Achternaam *</label><br>
             <input type="text" class="form-control" name="lastname"  id="last-cust"  placeholder="Achternaam" value="<?php echo $customer_form->lastname; ?>">
         </div>
         <div class="col-lg-1"></div>
@@ -132,7 +133,7 @@ $customer_form = new CustomerForm();
         <!-- description field -->
         <div class="col-lg-6 forminput">
             <label>Beschrijving</label><br>
-            <textarea id="comment description-cust" class="form-control" rows="4" col="20" name="description" value=""></textarea>
+            <textarea id="description-cust" class="form-control" rows="4" col="20" name="description"><?php echo $customer_form->description; ?></textarea>
         </div>
         
         <input class="btn btn-primary save-button"  value="<?php echo $customer_form->value; ?>" onclick="<?php echo $customer_form->onclick; ?>">

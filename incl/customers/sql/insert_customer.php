@@ -53,8 +53,8 @@ class QueryInsert extends Database
     public function insertDB(){
         // Two queries to input the data into the database
         // Query to input into customers table
-        $this->qry_insert_customer = "INSERT INTO customers (company, firstname, lastname, email, phone)
-                                      VALUES ('$this->company','$this->firstname', '$this->lastname', '$this->email', '$this->phone')";
+        $this->qry_insert_customer = "INSERT INTO customers (company, firstname, lastname, email, phone, description)
+                                      VALUES ('$this->company','$this->firstname', '$this->lastname', '$this->email', '$this->phone', '$this->description')";
 
         // Query to input into customers table
         $this->qry_insert_address = "INSERT INTO addresses (address, city, country, postal_code)
@@ -65,6 +65,6 @@ class QueryInsert extends Database
         mysqli_query($this->db, $this->qry_insert_address); 
     }
 }
-$query_insert = new QueryInsert();
 
+$query_insert = new QueryInsert();
 ?>
