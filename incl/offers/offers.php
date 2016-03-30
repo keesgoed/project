@@ -14,7 +14,7 @@ class Offers extends Database {
   
   public function qryDatabase() {
     $this->sql = "
-      SELECT o.offers_id, o.customers_id, o.offers_subtotal_price, o.offers_description, o.offers_date, 
+      SELECT o.offers_id, c.firstname, c.lastname, o.offers_subtotal_price, o.offers_description, o.offers_date,
              c.company 
       FROM offers AS o, customers AS c
       WHERE o.customers_id = c.customers_id
@@ -27,9 +27,9 @@ class Offers extends Database {
     while($this->rows = mysqli_fetch_assoc($this->query)) {
       echo("<tr>
               <td>".$this->rows['offers_id']."</td>
-              <td>".$this->rows['customers_id']."</td>
+              <td>".$this->rows['firstname']." ".$this->rows['lastname']."</td>
               <td>".$this->rows['company']."</td>
-              <td>".$this->rows['offers_subtotal_price']."</td>
+              <td>&euro;".$this->rows['offers_subtotal_price']."</td>
               <td>".$this->rows['offers_description']."</td>
               <td>".$this->rows['offers_date']."</td>
             </tr>
@@ -46,7 +46,7 @@ $offers = new Offers();
     <thead>
       <tr>
         <th>Offertenummer</th>
-        <th>Klantnummer</th>
+        <th>Klantnaam</th>
         <th>Bedrijf</th>
         <th>Bedrag</th>
         <th>Beschrijving</th>

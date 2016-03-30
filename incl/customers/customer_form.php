@@ -20,6 +20,8 @@ class CustomerForm extends Database {
     public $value = "Insert";
     public $onclick = "insertCustomer();";
 
+    private $customers;
+
     public function __construct()
     {
 
@@ -101,12 +103,12 @@ $customer_form = new CustomerForm();
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
-            <label>Straatnaam & huisnmr</label><br>
+            <label>Straat & huisnmr *</label><br>
             <input type="text" class="form-control" name="street" id="street-cust"     placeholder="Straatnaam & huisnummer" value="<?php echo $customer_form->street; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
-            <label>Postcode</label><br>
+            <label>Postcode *</label><br>
             <input type="text" class="form-control" name="zipcode"  id="zipcode-cust"   placeholder="Postcode" value="<?php echo $customer_form->zipcode; ?>">
         </div>
         <div class="col-lg-1"></div>

@@ -100,7 +100,7 @@ function insertCustomer() {
   company = $("#company-cust").val();
   description = $("#description-cust").val();
 
-  if (firstname != '' && lastname != '') {
+  if (firstname != '' && lastname != '' && zipcode != '' && street != '') {
     $.ajax({
       type: "POST",
       url: "incl/customers/sql/insert_customer.php",
@@ -122,7 +122,7 @@ function insertCustomer() {
     });
   }
   else {
-    alert('Vul alle velden in.');
+    alert('Vul de verplichte velden in.');
   }
 }
 
