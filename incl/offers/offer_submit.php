@@ -1,6 +1,7 @@
 <?php
 
 class OfferSubmit {
+
     public $onclick = "errorOffer();";
 
     public function __construct() {
