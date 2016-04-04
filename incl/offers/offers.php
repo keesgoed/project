@@ -32,6 +32,7 @@ class Offers extends Database {
               <td>&euro;".$this->rows['offers_subtotal_price']."</td>
               <td>".$this->rows['offers_description']."</td>
               <td>".$this->rows['offers_date']."</td>
+              <td><a href='offerte_toevoegen?id=".$this->rows['offers_id']."'>Bewerken</a></td>
             </tr>
       ");
     }
@@ -51,6 +52,7 @@ $offers = new Offers();
         <th>Bedrag</th>
         <th>Beschrijving</th>
         <th>Datum</th>
+        <th>Bewerken</th>
       </tr>
     </thead>
     <tbody>

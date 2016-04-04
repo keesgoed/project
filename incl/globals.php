@@ -63,9 +63,11 @@ class Globals {
     $this->sessions_php = $this->incl.$this->sessions_php;
     $this->nav_php = $this->header.$this->nav_php;
     $this->signin_php = $this->signin.$this->signin_php;
+
     $this->customers_php = $this->customers.$this->customers_php;
     $this->customerslist_php = $this->customers.$this->customerslist_php;
     $this->customerform_php = $this->customers.$this->customerform_php;
+
     $this->offers_php = $this->offers.$this->offers_php;
     $this->offerform_php = $this->offers.$this->offerform_php;
     $this->offersubmit_php = $this->offers.$this->offersubmit_php;
