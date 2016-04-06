@@ -5,13 +5,21 @@ class OfferSubmit {
     public $onclick = "errorOffer();";
 
     public function __construct() {
+        //Change onclick value to insertOffer()
       if (isset($_POST['id'])) {
-        $this->changeInput(); 
+        $this->insertOnclick();
       }
+        //Change onclick value to updateOffer()
+        if(isset($_GET['id'])){
+            $this->updateOnclick();
+        }
     }
     
-    public function changeInput() {
-      $this->onclick = "insertOffer(".$_POST['id'].");";
+    public function insertOnclick() {
+        $this->onclick = "insertOffer(" . $_POST['id'] . ");";
+    }
+    public function updateOnclick(){
+        $this->onclick = "updateOffer(".$_GET['id'].");";
     }
 }
 

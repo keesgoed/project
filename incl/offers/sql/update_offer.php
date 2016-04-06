@@ -6,6 +6,7 @@ class QueryUpdateOffer extends Database
 {
     private $description = '';
     private $price = '';
+    private $offer_id;
     
     public function __construct()
     {
@@ -17,15 +18,12 @@ class QueryUpdateOffer extends Database
         $this->updateDB();
     }
 
-    public function decVar($id){
+    public function decVar(){
         //Declare variables
         $this->description = $_POST['description'];
         $this->price = $_POST['price'];
         $this->date = date("Y-m-d H:i");
-        $this->customer_id = $_POST['id'];
-        
-        //static value needs a fix
-        $this->offer_id = 1;
+        $this->offer_id = $_POST['id'];
     }
 
     public function addSlash()
@@ -40,10 +38,10 @@ class QueryUpdateOffer extends Database
         //Create query to update customer
         $this->query_update_offer = "
         UPDATE offers
-        SET offer_date = '".$this->date."',
-            offer_description = '".$this->description."',
-            offer_subtotal_price = '".$this->price."'
-        WHERE offer_id= '".$this->offer_id."' AND customer_id = '".$this->customer_id."'
+        SET offers_date = '".$this->date."',
+            offers_description = '".$this->description."',
+            offers_subtotal_price = '".$this->price."'
+        WHERE offers_id= '".$this->offer_id."'
 ";
         //Execute query
         mysqli_query($this->db, $this->query_update_offer);

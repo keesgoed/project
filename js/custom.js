@@ -190,13 +190,29 @@ function insertOffer(id) {
   }
 }
 
+function updateOffer(id_get) {
+  description = $("#description-offer").val();
+  price = $("#price-offer").val();
+
+  if (description != '' && price != '') {
+    $.ajax({
+      type: "POST",
+      url: "incl/offers/sql/update_offer.php",
+      data: {
+        id : id_get,
+        price: price,
+        description: description
+      },
+      success: function (data) {
+        window.location.replace("offertes");
+      }
+    });
+  }
+  else {
+    alert('Vul alle velden in.');
+  }
+}
+
 function errorOffer() {
   alert("Selecteer een klant.");
 }
-
-
-
-
-
-
-

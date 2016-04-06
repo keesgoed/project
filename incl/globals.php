@@ -3,6 +3,7 @@
 class Globals {
   protected $project = "/albeda_paint";
   protected $home = "/klanten";
+  protected $home_offers = "/offers";
   
   public $fpdf_php = "/fpdf.php";
   public $database_php = "/database.php";
