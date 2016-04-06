@@ -81,7 +81,7 @@ $customer_form = new CustomerForm();
         <!-- Row 1 -->
         <div class="col-lg-3 forminput">
             <label>Voornaam *</label><br>
-            <input type="text" class="form-control" name="firstname"  id="first-cust" placeholder="Voornaam" value="<?php echo $customer_form->firstname; ?>">
+            <input type="text" class="form-control" name="firstname"  id="first-cust" placeholder="Voornaam" value="<?php echo $customer_form->firstname; ?>" autofocus>
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">

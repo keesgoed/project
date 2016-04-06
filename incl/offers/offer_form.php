@@ -52,7 +52,7 @@ $offer_form = new OfferForm();
 
       <div class="col-lg-11 forminput">
           <label>Omschrijving kosten</label><br>
-          <textarea id="description-offer" name="description" class="form-control" rows="15" col="20"><?php echo $offer_form->offers_description; ?></textarea>
+          <textarea id="description-offer" name="description" class="form-control" rows="15" col="20" autofocus><?php echo $offer_form->offers_description; ?></textarea>
       </div>
 
       <div class="col-lg-1"></div>

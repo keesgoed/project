@@ -88,7 +88,7 @@ $signin = new Signin();
   <h1>Log in uw account</h1>
   <br>
   <form method="post">
-    <input type="text" name="username" placeholder="<?php echo $signin->username; ?>">
+    <input type="text" name="username" placeholder="<?php echo $signin->username; ?>" autofocus>
     <input type="password" name="password" placeholder="<?php echo $signin->password; ?>">
     <input type="submit" name="signin" class="btn-signin" value="Login">
   </form>
