@@ -1,5 +1,4 @@
 <?php
-require_once $globals->fpdf_php;
 
 class Offers extends Database {
   private $sql;
@@ -33,6 +32,7 @@ class Offers extends Database {
               <td>".$this->rows['offers_description']."</td>
               <td>".$this->rows['offers_date']."</td>
               <td><a href='offerte_toevoegen?id=".$this->rows['offers_id']."'>Bewerken</a></td>
+              <td><a href='incl/offers/pdf/template.php' target='_blank'>Link</a></td>
             </tr>
       ");
     }
@@ -53,6 +53,7 @@ $offers = new Offers();
         <th>Beschrijving</th>
         <th>Datum</th>
         <th>Bewerken</th>
+        <th>Link</th>
       </tr>
     </thead>
     <tbody>
