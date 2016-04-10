@@ -2463,8 +2463,7 @@ class TCPDF_STATIC {
 		} elseif (stream_is_local($filename) !== true) {
 			return false;
 		}
-		//return fopen($filename, $mode);
-    return fopen($_SERVER['DOCUMENT_ROOT'].$filename, $mode);
+    return fopen($filename, $mode);
 	}
 
 	/**
