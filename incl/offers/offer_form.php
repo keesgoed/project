@@ -54,7 +54,7 @@ $offer_form = new OfferForm();
 <div class="container">
 
     <div class="col-lg-8">
-        <div class="col-lg-4 customerinfo" <?php echo ($_GET['page'] == "offerte_bewerken" ? "" : "hidden"); ?>>
+        <div class="col-lg-8 customerinfo" <?php echo ($_GET['page'] == "offerte_bewerken" ? "" : "hidden"); ?>>
             <label>Bedrijf: <?php echo $offer_form->company; ?></label><br>
             <label>Naam: <?php echo $offer_form->firstname." ".$offer_form->lastname;?></label>
         </div>
@@ -69,7 +69,7 @@ $offer_form = new OfferForm();
                   <div class="col-lg-1"></div>
                   <div class="col-lg-3 forminput">
                       <label>Totaalprijs</label><br>
-                      <input type="text" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="<?php echo $offer_form->subtotal; ?>">
+                      <input type="number" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="<?php echo $offer_form->subtotal; ?>">
                   </div>
 
                   <div class="col-lg-4">

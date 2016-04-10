@@ -7,18 +7,18 @@ $(document).ready(function() {
   switch (webpages) {
     case "klanten":
       initDTTT(webpages);
-      $("<a href='klant_toevoegen' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
+      $("<a href='klant_bewerken' class='btn btn-default edit-btn'>Klant bewerken</a>").prependTo("div.dataTables_filter");
       break;
     case "offertes":
       initDTTT(webpages);
       $("<a href='offerte_toevoegen' class='btn btn-default edit-btn'>Offerte maken</a>").prependTo("div.dataTables_filter");
       break;
-    case "klant_toevoegen":
+    case "klant_bewerken":
       initDTTTables(webpages);
       break;
     case "offerte_toevoegen":
       initDTTTables(webpages);
-      $("<a href='klant_toevoegen' class='btn btn-default btn-right'>Klant toevoegen</a>").appendTo("div#left-cstmr");
+      $("<a href='klant_bewerken' class='btn btn-default btn-right'>Klant bewerken</a>").appendTo("div#left-cstmr");
       break;
     case "offerte_bewerken":
       // $(".col-lg-8" ).before( "<div class='container'>" );
@@ -26,7 +26,7 @@ $(document).ready(function() {
       break;
     default:
       initDTTT("klanten");
-      $("<a href='klant_toevoegen' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
+      $("<a href='klant_bewerken' class='btn btn-default edit-btn'>Klant bewerken</a>").prependTo("div.dataTables_filter");
   }
 
   $('body').on('click', 'td[id]', function() {
@@ -188,7 +188,7 @@ function insertOffer(id) {
         description: description
       },
       success: function(data) {
-        location.reload();
+        window.location.replace("offertes");
       }
     });
   }

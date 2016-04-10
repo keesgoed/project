@@ -91,7 +91,7 @@ $customer_form = new CustomerForm();
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">
             <label>Emailadres</label><br>
-            <input type="text" class="form-control" name="email" id="email-cust"     placeholder="Emailadres" value="<?php echo $customer_form->email; ?>">
+            <input type="email" class="form-control" name="email" id="email-cust"     placeholder="Emailadres" value="<?php echo $customer_form->email; ?>">
         </div>
         <div class="col-lg-1"></div>
         <!-- End row 1 -->
@@ -99,7 +99,7 @@ $customer_form = new CustomerForm();
         <!-- Row 2 -->
         <div class="col-lg-3 forminput">
             <label>Telefoonnummer</label><br>
-            <input type="text" class="form-control" name="phone" id="phone-cust" placeholder="Telefoonnummer" value="<?php echo $customer_form->phone; ?>">
+            <input type="number" class="form-control" name="phone" id="phone-cust" placeholder="Telefoonnummer" value="<?php echo $customer_form->phone; ?>">
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-3 forminput">

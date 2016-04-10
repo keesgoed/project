@@ -43,7 +43,7 @@ require_once $globals->sessions_php;
         case 'offertes':
           require_once $globals->offers_php;
           break;
-        case 'klant_toevoegen':
+        case 'klant_bewerken':
           require_once $globals->customerslist_php;
           require_once $globals->customerform_php;
           break;
