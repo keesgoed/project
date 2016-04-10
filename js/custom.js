@@ -233,7 +233,6 @@ function deleteOffer(id_get) {
     },
     success: function (data) {
       window.location.replace("offertes");
-      alert(data);
     }
   });
 }
