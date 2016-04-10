@@ -223,3 +223,22 @@ function updateOffer(id_get) {
 function errorOffer() {
   alert("Selecteer een klant.");
 }
+
+function deleteOffer(id_get) {
+  $.ajax({
+    type: "POST",
+    url: "incl/offers/sql/delete_offer.php",
+    data: {
+      id: id_get,
+    },
+    success: function (data) {
+      window.location.replace("offertes");
+      alert(data);
+    }
+  });
+}
+  
+
+function errorOffer() {
+  alert("Selecteer een klant.");
+}
