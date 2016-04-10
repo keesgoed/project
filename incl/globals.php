@@ -5,7 +5,7 @@ class Globals {
   protected $home = "/klanten";
   protected $home_offers = "/offers";
   
-  public $fpdf_php = "/fpdf.php";
+  public $tcpdf_php = "/tcpdf.php";
   public $database_php = "/database.php";
   public $sessions_php = "/sessions.php";
   public $nav_php = "/nav.php";
@@ -21,7 +21,8 @@ class Globals {
   
   private $root;
   private $ext = "/ext";
-  private $fpdf = "/fpdf";
+  private $tcpdf = "/tcpdf";
+  private $tcpdf_config_lang = "/config/lang";
   private $incl = "/incl";
   private $header = "/header";
   private $signin = "/signin";
@@ -42,7 +43,7 @@ class Globals {
   
   public function dirPaths() {
     $this->ext = $this->root.$this->ext;
-    $this->fpdf = $this->ext.$this->fpdf;
+    $this->tcpdf = $this->ext.$this->tcpdf;
     
     $this->incl = $this->root.$this->incl;
     $this->header = $this->incl.$this->header;
@@ -58,7 +59,7 @@ class Globals {
   }
   
   public function inclScripts() {
-    $this->fpdf_php = $this->fpdf.$this->fpdf_php;
+    $this->tcpdf_php = $this->tcpdf.$this->tcpdf_php;
     
     $this->database_php = $this->incl.$this->database_php;
     $this->sessions_php = $this->incl.$this->sessions_php;
@@ -72,6 +73,7 @@ class Globals {
     $this->offers_php = $this->offers.$this->offers_php;
     $this->offerform_php = $this->offers.$this->offerform_php;
     $this->offersubmit_php = $this->offers.$this->offersubmit_php;
+    
     $this->footer_php = $this->footer.$this->footer_php;
 
   }

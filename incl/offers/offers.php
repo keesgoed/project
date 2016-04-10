@@ -32,7 +32,7 @@ class Offers extends Database {
               <td>".$this->rows['offers_description']."</td>
               <td>".$this->rows['offers_date']."</td>
               <td><a href='offerte_toevoegen?id=".$this->rows['offers_id']."'>Bewerken</a></td>
-              <td><a href='incl/offers/pdf/template.php' target='_blank'>Link</a></td>
+              <td><a href='incl/offers/templates/test.php' target='_blank'>Link</a></td>
             </tr>
       ");
     }

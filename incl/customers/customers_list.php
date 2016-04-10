@@ -48,7 +48,7 @@ class CustomersList extends Database {
         //Table with first and lastname of customer ordered by alphabet ascending.
         echo '<div class="container">
                 <div class="col-lg-4" id="left-cstmr">
-            <table id="table-'.$_GET['page'].'" class="table table-striped table-bordered dt-responsive nowrap">
+            <table id="table-'.$_GET['page'].'" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
               <thead>
                 <tr>
                     <th>Naam</th>

@@ -53,6 +53,9 @@ require_once $globals->sessions_php;
           break;
       }
     }
+    else {
+      require_once $globals->customers_php;
+    }
     
     //  Footer
     //  require_once $globals->footer_php;
