@@ -16,7 +16,7 @@ class OfferSubmit {
     }
     
     public function insertOnclick() {
-        $this->onclick = "insertOffer(" . $_POST['id'] . ");";
+        $this->onclick = "insertOffer(".$_POST['id'].");";
     }
     public function updateOnclick(){
         $this->onclick = "updateOffer(".$_GET['id'].");";

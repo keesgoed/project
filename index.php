@@ -51,6 +51,8 @@ require_once $globals->sessions_php;
           require_once $globals->customerslist_php;
           require_once $globals->offerform_php;
           break;
+        case 'offerte_bewerken':
+          require_once $globals->offerform_php;    
       }
     }
     else {

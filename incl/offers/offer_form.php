@@ -24,8 +24,8 @@ class OfferForm extends Database{
         $this->id = $_GET['id'];
 
         $this->sql = "
-      SELECT offers_subtotal_price, offers_description, offers_date
-      FROM offers
+      SELECT customers_id, offers_subtotal_price, offers_description, offers_date
+      FROM offers AS o
       WHERE offers_id = '$this->id'
     ";
 
@@ -42,29 +42,39 @@ class OfferForm extends Database{
         //stripslash description
         $this->offers_description = stripslashes($this->offers_description);
     }
+    public function getInfo(){
+       
+    }
+
 }
 $offer_form = new OfferForm();
 ?>
+<div class="container">
 
-<div class="col-lg-8">
-  <form method="post">
-  <div class="form form-group right-offer">
+    <div class="col-lg-8">
+        <div class="col-lg-4 customerinfo">
+            <label>Bedrijf: PARTICULIER</label><br>
+            <label>Naam: Kees Goedegebuure</label>
+        </div>
+      <form method="post">
+          <div class="form form-group right-offer">
 
-      <div class="col-lg-11 forminput">
-          <label>Omschrijving kosten</label><br>
-          <textarea id="description-offer" name="description" class="form-control" rows="15" col="20" autofocus><?php echo $offer_form->offers_description; ?></textarea>
-      </div>
+              <div class="col-lg-11 forminput">
+                  <label>Omschrijving kosten</label><br>
+                  <textarea id="description-offer" name="description" class="form-control" rows="15" col="20" autofocus><?php echo $offer_form->offers_description; ?></textarea>
+              </div>
 
-      <div class="col-lg-1"></div>
-      <div class="col-lg-3 forminput">
-          <label>Totaalprijs</label><br>
-          <input type="text" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="<?php echo $offer_form->subtotal; ?>">
-      </div>
-      
-      <div class="col-lg-2">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-3 forminput">
+                  <label>Totaalprijs</label><br>
+                  <input type="text" class="form-control" name="price"  id="price-offer"   placeholder="Totaalprijs" value="<?php echo $offer_form->subtotal; ?>">
+              </div>
 
-          <?php require_once $globals->offersubmit_php; ?>
-      </div>
-  </div>
-  </form>
+              <div class="col-lg-2">
+
+                  <?php require_once $globals->offersubmit_php; ?>
+              </div>
+          </div>
+          </form>
+    </div>
 </div>

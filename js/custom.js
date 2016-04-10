@@ -20,6 +20,10 @@ $(document).ready(function() {
       initDTTTables(webpages);
       $("<a href='klant_toevoegen' class='btn btn-default btn-right'>Klant toevoegen</a>").appendTo("div#left-cstmr");
       break;
+    case "offerte_bewerken":
+      // $(".col-lg-8" ).before( "<div class='container'>" );
+      // $(".col-lg-8").appendTo(".container");
+      break;
     default:
       initDTTT("klanten");
       $("<a href='klant_toevoegen' class='btn btn-default edit-btn'>Klant toevoegen</a>").prependTo("div.dataTables_filter");
