@@ -4,30 +4,33 @@ class OfferForm extends Database{
     private $sql;
     private $query;
     private $offers;
-
+    
+    public $firstname = "";
+    public $lastname = "";
+    public $company = "";
     public $offers_description = "";
     public $subtotal = "";
     public $button;
     public $onclick = "errorOffer();";
 
     public function __construct(){
+      if(isset($_GET['id'])){
         $this->connDatabase();
         $this->dbError();
-
-
-        if(isset($_GET['id'])){
-          $this->getOffer();
-        }
+        $this->getOffer();
+      }
     }
 
     public function getOffer(){
         $this->id = $_GET['id'];
 
         $this->sql = "
-      SELECT customers_id, offers_subtotal_price, offers_description, offers_date
-      FROM offers AS o
-      WHERE offers_id = '$this->id'
-    ";
+          SELECT o.offers_subtotal_price, o.offers_description, o.offers_date,
+                c.firstname, c.lastname, c.company
+          FROM offers AS o, customers AS c
+          WHERE o.offers_id = ".$this->id."
+            AND o.customers_id = c.customers_id  
+        ";
 
         $this->query = mysqli_query($this->db, $this->sql);
 
@@ -38,6 +41,9 @@ class OfferForm extends Database{
         //Declare fields in input fields
         $this->offers_description = $this->offers['offers_description'];
         $this->subtotal = $this->offers['offers_subtotal_price'];
+        $this->firstname = $this->offers['firstname'];
+        $this->lastname = $this->offers['lastname'];
+        $this->company = $this->offers['company'];
 
         //stripslash description
         $this->offers_description = stripslashes($this->offers_description);
@@ -52,9 +58,9 @@ $offer_form = new OfferForm();
 <div class="container">
 
     <div class="col-lg-8">
-        <div class="col-lg-4 customerinfo">
-            <label>Bedrijf: PARTICULIER</label><br>
-            <label>Naam: Kees Goedegebuure</label>
+        <div class="col-lg-4 customerinfo" <?php echo ($_GET['page'] == "offerte_bewerken" ? "" : "hidden"); ?>>
+            <label>Bedrijf: <?php echo $offer_form->company; ?></label><br>
+            <label>Naam: <?php echo $offer_form->firstname." ".$offer_form->lastname;?></label>
         </div>
       <form method="post">
           <div class="form form-group right-offer">
