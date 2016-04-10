@@ -22,7 +22,6 @@ class Globals {
   private $root;
   private $ext = "/ext";
   private $tcpdf = "/tcpdf";
-  private $tcpdf_config_lang = "/config/lang";
   private $incl = "/incl";
   private $header = "/header";
   private $signin = "/signin";
